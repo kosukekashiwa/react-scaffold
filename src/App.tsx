@@ -77,7 +77,7 @@ const AppHeader: React.VFC = () => {
           margin: 'auto',
         }}
       >
-        <Box sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Managing Normalized Data</Box>
+        <Box sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>React Scaffold</Box>
       </Toolbar>
     </AppBar>
   );
