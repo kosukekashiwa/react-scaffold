@@ -21,29 +21,11 @@ import { blue, blueGrey } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
 export const App: React.VFC = () => {
-  const [naviOpen, setNaviOpen] = useState(true);
-
-  const handleMenuIconClick = useCallback((): void => {
-    setNaviOpen(true);
-  }, []);
-  const handleMenuOpenIconClick = useCallback((): void => {
-    setNaviOpen(false);
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<Navigate to={'ui'} />} />
-        <Route
-          path="ui"
-          element={
-            <AppLayout
-              naviOpen={naviOpen}
-              onMenuIconClick={handleMenuIconClick}
-              onMenuOpenIconClick={handleMenuOpenIconClick}
-            />
-          }
-        >
+        <Route path="ui" element={<AppLayout />}>
           <Route index element={<OverView />} />
           <Route path={'home'} element={<Box>Home</Box>} />
           <Route path={'dashboard'} element={<Box>Dashboard</Box>} />
@@ -56,26 +38,53 @@ export const App: React.VFC = () => {
   );
 };
 
-export type AppLayoutProps = Pick<AppHeaderProps, 'onMenuIconClick' | 'onMenuOpenIconClick'> &
-  Pick<AppNavigationDrawerProps, 'naviOpen'>;
-const AppLayout: React.VFC<AppLayoutProps> = ({
-  naviOpen,
-  onMenuIconClick,
-  onMenuOpenIconClick,
-}) => {
+const AppLayout: React.VFC = () => {
+  const navigate = useNavigate();
+  const [naviOpen, setNaviOpen] = useState(true);
+
+  const handleMenuIconClick = useCallback((): void => {
+    setNaviOpen(true);
+  }, []);
+  const handleMenuOpenIconClick = useCallback((): void => {
+    setNaviOpen(false);
+  }, []);
+
+  const handleAppTitleClick = useCallback((): void => {
+    navigate('/');
+  }, [navigate]);
+  const handleHomeIconClick = useCallback((): void => {
+    navigate('home');
+  }, [navigate]);
+  const handleDashboardIconClick = useCallback((): void => {
+    navigate('dashboard');
+  }, [navigate]);
+  const handleGroupsIconClick = useCallback((): void => {
+    navigate('groups');
+  }, [navigate]);
+  const handleSettingsIconClick = useCallback((): void => {
+    navigate('settings');
+  }, [navigate]);
+
   return (
     <Box display="flex" flexDirection="column" height="100vh">
       <AppHeader
         open={naviOpen}
-        onMenuIconClick={onMenuIconClick}
-        onMenuOpenIconClick={onMenuOpenIconClick}
+        onMenuIconClick={handleMenuIconClick}
+        onMenuOpenIconClick={handleMenuOpenIconClick}
+        onAppTitleClick={handleAppTitleClick}
       />
       <Box
         display="flex"
-        height="calc(100% - 64px - 64px)" // header:64px, padding:32px*2
+        height="calc(100% - 64px - 64px)" // header:64px, padding:64px(32px*2)
         flexGrow={1}
       >
-        <AppNavigationDrawer naviOpen={naviOpen} />
+        <AppNavigationDrawer
+          naviOpen={naviOpen}
+          onHomeIconClick={handleHomeIconClick}
+          onDashboardIconClick={handleDashboardIconClick}
+          onGroupsIconClick={handleGroupsIconClick}
+          onSettingsIconClick={handleSettingsIconClick}
+        />
         <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
           <Box
             minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
@@ -96,14 +105,14 @@ export type AppHeaderProps = {
   open: boolean;
   onMenuIconClick: () => void;
   onMenuOpenIconClick: () => void;
+  onAppTitleClick: () => void;
 };
-const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpenIconClick }) => {
-  const navigate = useNavigate();
-
-  const handleAppTitleClick = useCallback((): void => {
-    navigate('/');
-  }, []);
-
+const AppHeader: React.VFC<AppHeaderProps> = ({
+  open,
+  onMenuIconClick,
+  onMenuOpenIconClick,
+  onAppTitleClick,
+}) => {
   return (
     <AppBar sx={{ backgroundColor: blue[900], zIndex: 1 }} position="static">
       <Toolbar
@@ -135,7 +144,7 @@ const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpe
             <MenuIcon />
           </IconButton>
         )}
-        <Button variant="text" sx={{ color: '#ffffff' }} onClick={handleAppTitleClick}>
+        <Button variant="text" sx={{ color: '#ffffff' }} onClick={onAppTitleClick}>
           React Scaffold
         </Button>
       </Toolbar>
@@ -145,23 +154,18 @@ const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpe
 
 export type AppNavigationDrawerProps = {
   naviOpen: boolean;
+  onHomeIconClick: () => void;
+  onDashboardIconClick: () => void;
+  onGroupsIconClick: () => void;
+  onSettingsIconClick: () => void;
 };
-const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({ naviOpen }) => {
-  const navigate = useNavigate();
-
-  const handleHomeIconClick = useCallback((): void => {
-    navigate('home');
-  }, []);
-  const handleDashboardIconClick = useCallback((): void => {
-    navigate('dashboard');
-  }, []);
-  const handleGroupsIconClick = useCallback((): void => {
-    navigate('groups');
-  }, []);
-  const handleSettingsIconClick = useCallback((): void => {
-    navigate('settings');
-  }, []);
-
+const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
+  naviOpen,
+  onHomeIconClick,
+  onDashboardIconClick,
+  onGroupsIconClick,
+  onSettingsIconClick,
+}) => {
   return (
     <Box
       width={naviOpen ? '240px' : '64px'}
@@ -176,25 +180,25 @@ const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({ naviOpen }) 
           open={naviOpen}
           icon={<HomeIcon />}
           label="Home"
-          onClick={handleHomeIconClick}
+          onClick={onHomeIconClick}
         />
         <NaviMenuButton
           open={naviOpen}
           icon={<DashboardIcon />}
           label="Dashboard"
-          onClick={handleDashboardIconClick}
+          onClick={onDashboardIconClick}
         />
         <NaviMenuButton
           open={naviOpen}
           icon={<GroupIcon />}
           label="Groups"
-          onClick={handleGroupsIconClick}
+          onClick={onGroupsIconClick}
         />
         <NaviMenuButton
           open={naviOpen}
           icon={<SettingsIcon />}
           label="Settings"
-          onClick={handleSettingsIconClick}
+          onClick={onSettingsIconClick}
         />
       </List>
     </Box>
