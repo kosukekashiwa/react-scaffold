@@ -232,14 +232,14 @@ const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
         </ListItemButton>
         <Collapse in={dashboardMenuOpen} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 9 }} onClick={onQ4MilestonesClick}>
-              <ListItemText primary="Q4 Milestones" />
+            <ListItemButton sx={{ pl: 9, whiteSpace: 'nowrap' }} onClick={onQ4MilestonesClick}>
+              <ListItemText primary="Q4 Milestones" sx={{ opacity: naviOpen ? 1 : 0 }} />
             </ListItemButton>
             <ListItemButton sx={{ pl: 9 }} onClick={onReleasesClick}>
-              <ListItemText primary="Releases" />
+              <ListItemText primary="Releases" sx={{ opacity: naviOpen ? 1 : 0 }} />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 9 }} onClick={onSiteTrafficClick}>
-              <ListItemText primary="Site Traffic" />
+            <ListItemButton sx={{ pl: 9, whiteSpace: 'nowrap' }} onClick={onSiteTrafficClick}>
+              <ListItemText primary="Site Traffic" sx={{ opacity: naviOpen ? 1 : 0 }} />
             </ListItemButton>
           </List>
         </Collapse>
