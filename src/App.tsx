@@ -10,6 +10,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
   Toolbar,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -290,9 +291,23 @@ const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label, onC
 };
 
 const OverView: React.VFC = () => {
+  const pallete = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
   return (
-    <Box sx={{ border: '2px solid gold' }} height="1200px">
-      OverView (scroll check)
+    <Box>
+      <Box>OverView (scroll check)</Box>
+      <Stack>
+        {pallete.map((code) => (
+          <Box
+            key={code}
+            height={200}
+            width={100}
+            p={2}
+            sx={{ background: blue[code], color: code < 500 ? '#000000' : '#ffffff' }}
+          >
+            {code}
+          </Box>
+        ))}
+      </Stack>
     </Box>
   );
 };
