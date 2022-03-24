@@ -4,6 +4,7 @@ import {
   AppBar,
   Box,
   Button,
+  Collapse,
   IconButton,
   List,
   ListItemButton,
@@ -17,6 +18,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { blue, blueGrey } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
@@ -28,7 +31,12 @@ export const App: React.VFC = () => {
         <Route path="ui" element={<AppLayout />}>
           <Route index element={<OverView />} />
           <Route path={'home'} element={<Box>Home</Box>} />
-          <Route path={'dashboard'} element={<Box>Dashboard</Box>} />
+          <Route path={'dashboard'}>
+            <Route index element={<Navigate to={'q4-milestones'} />} />
+            <Route path={'q4-milestones'} element={<Box>Q4 Milestones</Box>} />
+            <Route path={'releases'} element={<Box>Releases</Box>} />
+            <Route path={'site-traffic'} element={<Box>Site Traffic</Box>} />
+          </Route>
           <Route path={'groups'} element={<Box>Groups</Box>} />
           <Route path={'settings'} element={<Box>Settings</Box>} />
         </Route>
@@ -55,8 +63,14 @@ const AppLayout: React.VFC = () => {
   const handleHomeIconClick = useCallback((): void => {
     navigate('home');
   }, [navigate]);
-  const handleDashboardIconClick = useCallback((): void => {
-    navigate('dashboard');
+  const handleQ4MilestonesClick = useCallback((): void => {
+    navigate('dashboard/q4-milestones');
+  }, [navigate]);
+  const handleReleasesClick = useCallback((): void => {
+    navigate('dashboard/releases');
+  }, [navigate]);
+  const handleSiteTrafficClick = useCallback((): void => {
+    navigate('dashboard/site-traffic');
   }, [navigate]);
   const handleGroupsIconClick = useCallback((): void => {
     navigate('groups');
@@ -81,7 +95,9 @@ const AppLayout: React.VFC = () => {
         <AppNavigationDrawer
           naviOpen={naviOpen}
           onHomeIconClick={handleHomeIconClick}
-          onDashboardIconClick={handleDashboardIconClick}
+          onQ4MilestonesClick={handleQ4MilestonesClick}
+          onReleasesClick={handleReleasesClick}
+          onSiteTrafficClick={handleSiteTrafficClick}
           onGroupsIconClick={handleGroupsIconClick}
           onSettingsIconClick={handleSettingsIconClick}
         />
@@ -155,20 +171,31 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
 export type AppNavigationDrawerProps = {
   naviOpen: boolean;
   onHomeIconClick: () => void;
-  onDashboardIconClick: () => void;
+  onQ4MilestonesClick: () => void;
+  onReleasesClick: () => void;
+  onSiteTrafficClick: () => void;
   onGroupsIconClick: () => void;
   onSettingsIconClick: () => void;
 };
 const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
   naviOpen,
   onHomeIconClick,
-  onDashboardIconClick,
+  onQ4MilestonesClick,
+  onReleasesClick,
+  onSiteTrafficClick,
   onGroupsIconClick,
   onSettingsIconClick,
 }) => {
+  const [dashboardMenuOpen, setDashboardMenuOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setDashboardMenuOpen(!dashboardMenuOpen);
+  };
+
   return (
     <Box
-      width={naviOpen ? '240px' : '64px'}
+      width={naviOpen ? '240px' : '0px'}
+      // width={naviOpen ? '240px' : '64px'}
       sx={{
         background: blueGrey[100],
         overflowY: 'auto',
@@ -182,12 +209,39 @@ const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
           label="Home"
           onClick={onHomeIconClick}
         />
-        <NaviMenuButton
-          open={naviOpen}
-          icon={<DashboardIcon />}
-          label="Dashboard"
-          onClick={onDashboardIconClick}
-        />
+        <ListItemButton
+          onClick={handleClick}
+          sx={{
+            minHeight: 48,
+            justifyContent: naviOpen ? 'initial' : 'center',
+            px: 2.5,
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              minWidth: 0,
+              mr: naviOpen ? 3 : 'auto',
+              justifyContent: 'center',
+            }}
+          >
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" sx={{ opacity: naviOpen ? 1 : 0 }} />
+          {naviOpen && <>{dashboardMenuOpen ? <ExpandLess /> : <ExpandMore />}</>}
+        </ListItemButton>
+        <Collapse in={dashboardMenuOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 9 }} onClick={onQ4MilestonesClick}>
+              <ListItemText primary="Q4 Milestones" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 9 }} onClick={onReleasesClick}>
+              <ListItemText primary="Releases" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 9 }} onClick={onSiteTrafficClick}>
+              <ListItemText primary="Site Traffic" />
+            </ListItemButton>
+          </List>
+        </Collapse>
         <NaviMenuButton
           open={naviOpen}
           icon={<GroupIcon />}
