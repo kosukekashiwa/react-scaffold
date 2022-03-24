@@ -24,6 +24,8 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { blue, blueGrey } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
+const NAVIGATION_WIDTH = 240;
+
 export const App: React.VFC = () => {
   return (
     <BrowserRouter>
@@ -104,8 +106,8 @@ const AppLayout: React.VFC = () => {
         />
         <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
           <Box
-            minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
-            maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
+            minWidth={`calc(${FLEXIBLE_MIN_WIDTH} - ${naviOpen ? NAVIGATION_WIDTH : 0})px`}
+            maxWidth={`calc(${FLEXIBLE_MAX_WIDTH} - ${naviOpen ? NAVIGATION_WIDTH : 0})px`}
             margin="auto"
             px="32px"
             py="16px"
@@ -135,7 +137,6 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
       <Toolbar
         sx={{
           width: '100vw',
-          margin: 'auto',
         }}
       >
         {open ? (
@@ -195,8 +196,8 @@ const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
 
   return (
     <Box
-      width={naviOpen ? '240px' : '0px'}
-      // width={naviOpen ? '240px' : '64px'}
+      width={naviOpen ? `${NAVIGATION_WIDTH}px` : '0px'}
+      // width={naviOpen ? `${NAVIGATION_WIDTH}px` : '64px'}
       sx={{
         background: blueGrey[100],
         overflowY: 'auto',
