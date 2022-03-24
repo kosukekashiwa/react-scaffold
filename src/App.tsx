@@ -1,18 +1,53 @@
-import { AppBar, Box, Toolbar } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { blue } from '@mui/material/colors';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
 export const App: React.VFC = () => {
+  const [naviOpen, setNaviOpen] = useState(true);
+
+  const handleMenuIconClick = useCallback((): void => {
+    setNaviOpen(true);
+  }, []);
+  const handleMenuOpenIconClick = useCallback((): void => {
+    setNaviOpen(false);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Redirect exact strict from="/" to="/cra-app" /> */}
         <Route path={`/`} element={<Navigate to={`ui`} />} />
-        <Route path="ui" element={<AppLayout />}>
+        <Route
+          path="ui"
+          element={
+            <AppLayout
+              naviOpen={naviOpen}
+              onMenuIconClick={handleMenuIconClick}
+              onMenuOpenIconClick={handleMenuOpenIconClick}
+            />
+          }
+        >
           <Route index element={<Navigate to={`hoge`} />} />
-          <Route path={`hoge`} element={<div>hoge</div>} />
+          <Route
+            path={`hoge`}
+            element={
+              <Box sx={{ border: '2px solid gold' }} height="1200px">
+                hoge
+              </Box>
+            }
+          />
           <Route path={`fuga`} element={<div>fuga</div>} />
         </Route>
         <Route path="*" element={<div>Not Found</div>} />
@@ -21,63 +56,140 @@ export const App: React.VFC = () => {
   );
 };
 
-const AppLayout: React.VFC = () => {
-  return (
-    <AppContainer>
-      <AppHeader />
-      <MainContainer>
-        <Outlet />
-      </MainContainer>
-    </AppContainer>
-  );
-};
-
-// ヘッダとコンテンツを並べるComponent仮実装
-type AppContainerProps = {
-  children: React.ReactNode;
-};
-const AppContainer: React.VFC<AppContainerProps> = (props) => {
+type AppLayoutProps = Pick<AppHeaderProps, 'naviOpen' | 'onMenuIconClick' | 'onMenuOpenIconClick'>;
+const AppLayout: React.VFC<AppLayoutProps> = ({
+  naviOpen,
+  onMenuIconClick,
+  onMenuOpenIconClick,
+}) => {
   return (
     <Box display="flex" flexDirection="column" height="100vh">
-      {props.children}
-    </Box>
-  );
-};
-
-// コンテンツを表示するComponent仮実装
-type MainContainerProps = {
-  children: React.ReactNode;
-};
-const MainContainer: React.VFC<MainContainerProps> = (props) => {
-  return (
-    <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
+      <AppHeader
+        naviOpen={naviOpen}
+        onMenuIconClick={onMenuIconClick}
+        onMenuOpenIconClick={onMenuOpenIconClick}
+      />
       <Box
-        width="100vw"
-        minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
-        maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
-        margin="auto"
-        px="32px"
-        py="16px"
+        display="flex"
+        height="calc(100% - 64px - 64px)" // header:64px, padding:32px*2
+        flexGrow={1}
+        sx={{ border: '2px solid green' }}
       >
-        {props.children}
+        <Box sx={{ overflowY: 'auto', border: '2px solid blue' }}>
+          <List>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <MenuOpenIcon />
+              </ListItemIcon>
+              <ListItemText primary={'hoge'} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </List>
+        </Box>
+        <Box flexGrow={1} sx={{ overflowY: 'auto', border: '2px solid red' }}>
+          <Box
+            minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
+            maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
+            margin="auto"
+            px="32px"
+            py="16px"
+          >
+            <Outlet />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
 };
 
+// ヘッダとコンテンツを並べるComponent仮実装
+// type AppContainerProps = {
+//   children: React.ReactNode;
+// };
+// const AppContainer: React.VFC<AppContainerProps> = (props) => {
+//   return (
+//     <Box display="flex" flexDirection="column" height="100vh">
+//       {props.children}
+//     </Box>
+//   );
+// };
+
+// コンテンツを表示するComponent仮実装
+// type MainContainerProps = {
+//   children: React.ReactNode;
+// };
+// const MainContainer: React.VFC<MainContainerProps> = (props) => {
+//   return (
+//     <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
+//       <Box
+//         minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
+//         maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
+//         margin="auto"
+//         px="32px"
+//         py="16px"
+//       >
+//         {props.children}
+//       </Box>
+//     </Box>
+//   );
+// };
+
 // ヘッダComponent仮実装
-const AppHeader: React.VFC = () => {
+export type AppHeaderProps = {
+  naviOpen: boolean;
+  onMenuIconClick: () => void;
+  onMenuOpenIconClick: () => void;
+};
+const AppHeader: React.VFC<AppHeaderProps> = ({
+  naviOpen,
+  onMenuIconClick,
+  onMenuOpenIconClick,
+}) => {
   return (
     <AppBar sx={{ backgroundColor: blue[900] }} position="static">
       <Toolbar
         sx={{
           width: '100vw',
-          minWidth: `${FLEXIBLE_MIN_WIDTH}px`,
-          maxWidth: `${FLEXIBLE_MAX_WIDTH}px`,
+          // minWidth: `${FLEXIBLE_MIN_WIDTH}px`,
+          // maxWidth: `${FLEXIBLE_MAX_WIDTH}px`,
           margin: 'auto',
         }}
       >
-        <Box sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>React Scaffold</Box>
+        {naviOpen ? (
+          <IconButton
+            onClick={onMenuOpenIconClick}
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuOpenIcon />
+          </IconButton>
+        ) : (
+          <IconButton
+            onClick={onMenuIconClick}
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+        <Box>React Scaffold</Box>
       </Toolbar>
     </AppBar>
   );
