@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Box,
+  Button,
   IconButton,
   List,
   ListItemButton,
@@ -16,7 +17,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { blue } from '@mui/material/colors';
+import { blue, blueGrey } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
 export const App: React.VFC = () => {
@@ -32,7 +33,7 @@ export const App: React.VFC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={`/`} element={<Navigate to={`ui`} />} />
+        <Route path={'/'} element={<Navigate to={'ui'} />} />
         <Route
           path="ui"
           element={
@@ -43,16 +44,11 @@ export const App: React.VFC = () => {
             />
           }
         >
-          <Route index element={<Navigate to={`hoge`} />} />
-          <Route
-            path={`hoge`}
-            element={
-              <Box sx={{ border: '2px solid gold' }} height="1200px">
-                hoge
-              </Box>
-            }
-          />
-          <Route path={`fuga`} element={<div>fuga</div>} />
+          <Route index element={<OverView />} />
+          <Route path={'home'} element={<Box>Home</Box>} />
+          <Route path={'dashboard'} element={<Box>Dashboard</Box>} />
+          <Route path={'groups'} element={<Box>Groups</Box>} />
+          <Route path={'settings'} element={<Box>Settings</Box>} />
         </Route>
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
@@ -102,8 +98,14 @@ export type AppHeaderProps = {
   onMenuOpenIconClick: () => void;
 };
 const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpenIconClick }) => {
+  const navigate = useNavigate();
+
+  const handleAppTitleClick = useCallback((): void => {
+    navigate('/');
+  }, []);
+
   return (
-    <AppBar sx={{ backgroundColor: blue[900] }} position="static">
+    <AppBar sx={{ backgroundColor: blue[900], zIndex: 1 }} position="static">
       <Toolbar
         sx={{
           width: '100vw',
@@ -133,7 +135,9 @@ const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpe
             <MenuIcon />
           </IconButton>
         )}
-        <Box>React Scaffold</Box>
+        <Button variant="text" sx={{ color: '#ffffff' }} onClick={handleAppTitleClick}>
+          React Scaffold
+        </Button>
       </Toolbar>
     </AppBar>
   );
@@ -143,19 +147,55 @@ export type AppNavigationDrawerProps = {
   naviOpen: boolean;
 };
 const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({ naviOpen }) => {
+  const navigate = useNavigate();
+
+  const handleHomeIconClick = useCallback((): void => {
+    navigate('home');
+  }, []);
+  const handleDashboardIconClick = useCallback((): void => {
+    navigate('dashboard');
+  }, []);
+  const handleGroupsIconClick = useCallback((): void => {
+    navigate('groups');
+  }, []);
+  const handleSettingsIconClick = useCallback((): void => {
+    navigate('settings');
+  }, []);
+
   return (
     <Box
       width={naviOpen ? '240px' : '64px'}
       sx={{
+        background: blueGrey[100],
         overflowY: 'auto',
         transition: 'width 0.2s ease',
       }}
     >
       <List>
-        <NaviMenuButton open={naviOpen} icon={<HomeIcon />} label="Home" />
-        <NaviMenuButton open={naviOpen} icon={<DashboardIcon />} label="Dashboard" />
-        <NaviMenuButton open={naviOpen} icon={<GroupIcon />} label="Groups" />
-        <NaviMenuButton open={naviOpen} icon={<SettingsIcon />} label="Settings" />
+        <NaviMenuButton
+          open={naviOpen}
+          icon={<HomeIcon />}
+          label="Home"
+          onClick={handleHomeIconClick}
+        />
+        <NaviMenuButton
+          open={naviOpen}
+          icon={<DashboardIcon />}
+          label="Dashboard"
+          onClick={handleDashboardIconClick}
+        />
+        <NaviMenuButton
+          open={naviOpen}
+          icon={<GroupIcon />}
+          label="Groups"
+          onClick={handleGroupsIconClick}
+        />
+        <NaviMenuButton
+          open={naviOpen}
+          icon={<SettingsIcon />}
+          label="Settings"
+          onClick={handleSettingsIconClick}
+        />
       </List>
     </Box>
   );
@@ -165,10 +205,12 @@ export type NaviMenuButtonProps = {
   open: boolean;
   icon: React.ReactNode;
   label: string;
+  onClick: () => void;
 };
-const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label }) => {
+const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label, onClick }) => {
   return (
     <ListItemButton
+      onClick={onClick}
       sx={{
         minHeight: 48,
         justifyContent: open ? 'initial' : 'center',
@@ -186,5 +228,13 @@ const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label }) =
       </ListItemIcon>
       <ListItemText primary={label} sx={{ opacity: open ? 1 : 0 }} />
     </ListItemButton>
+  );
+};
+
+const OverView: React.VFC = () => {
+  return (
+    <Box sx={{ border: '2px solid gold' }} height="1200px">
+      OverView (scroll check)
+    </Box>
   );
 };
