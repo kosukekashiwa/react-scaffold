@@ -61,7 +61,7 @@ export const App: React.VFC = () => {
 };
 
 export type AppLayoutProps = Pick<AppHeaderProps, 'onMenuIconClick' | 'onMenuOpenIconClick'> &
-  Pick<AppNavigationProps, 'naviOpen'>;
+  Pick<AppNavigationDrawerProps, 'naviOpen'>;
 const AppLayout: React.VFC<AppLayoutProps> = ({
   naviOpen,
   onMenuIconClick,
@@ -139,10 +139,10 @@ const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpe
   );
 };
 
-export type AppNavigationProps = {
+export type AppNavigationDrawerProps = {
   naviOpen: boolean;
 };
-const AppNavigationDrawer: React.VFC<AppNavigationProps> = ({ naviOpen }) => {
+const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({ naviOpen }) => {
   return (
     <Box
       width={naviOpen ? '240px' : '64px'}
