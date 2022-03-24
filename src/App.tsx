@@ -12,6 +12,10 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import HomeIcon from '@mui/icons-material/Home';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import GroupIcon from '@mui/icons-material/Group';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { blue } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
@@ -56,7 +60,8 @@ export const App: React.VFC = () => {
   );
 };
 
-type AppLayoutProps = Pick<AppHeaderProps, 'naviOpen' | 'onMenuIconClick' | 'onMenuOpenIconClick'>;
+export type AppLayoutProps = Pick<AppHeaderProps, 'onMenuIconClick' | 'onMenuOpenIconClick'> &
+  Pick<AppNavigationProps, 'naviOpen'>;
 const AppLayout: React.VFC<AppLayoutProps> = ({
   naviOpen,
   onMenuIconClick,
@@ -65,7 +70,7 @@ const AppLayout: React.VFC<AppLayoutProps> = ({
   return (
     <Box display="flex" flexDirection="column" height="100vh">
       <AppHeader
-        naviOpen={naviOpen}
+        open={naviOpen}
         onMenuIconClick={onMenuIconClick}
         onMenuOpenIconClick={onMenuOpenIconClick}
       />
@@ -73,31 +78,9 @@ const AppLayout: React.VFC<AppLayoutProps> = ({
         display="flex"
         height="calc(100% - 64px - 64px)" // header:64px, padding:32px*2
         flexGrow={1}
-        sx={{ border: '2px solid green' }}
       >
-        <Box sx={{ overflowY: 'auto', border: '2px solid blue' }}>
-          <List>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: naviOpen ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: naviOpen ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                <MenuOpenIcon />
-              </ListItemIcon>
-              <ListItemText primary={'hoge'} sx={{ opacity: naviOpen ? 1 : 0 }} />
-            </ListItemButton>
-          </List>
-        </Box>
-        <Box flexGrow={1} sx={{ overflowY: 'auto', border: '2px solid red' }}>
+        <AppNavigationDrawer naviOpen={naviOpen} />
+        <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
           <Box
             minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
             maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
@@ -114,15 +97,11 @@ const AppLayout: React.VFC<AppLayoutProps> = ({
 };
 
 export type AppHeaderProps = {
-  naviOpen: boolean;
+  open: boolean;
   onMenuIconClick: () => void;
   onMenuOpenIconClick: () => void;
 };
-const AppHeader: React.VFC<AppHeaderProps> = ({
-  naviOpen,
-  onMenuIconClick,
-  onMenuOpenIconClick,
-}) => {
+const AppHeader: React.VFC<AppHeaderProps> = ({ open, onMenuIconClick, onMenuOpenIconClick }) => {
   return (
     <AppBar sx={{ backgroundColor: blue[900] }} position="static">
       <Toolbar
@@ -131,7 +110,7 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
           margin: 'auto',
         }}
       >
-        {naviOpen ? (
+        {open ? (
           <IconButton
             onClick={onMenuOpenIconClick}
             size="large"
@@ -157,5 +136,55 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
         <Box>React Scaffold</Box>
       </Toolbar>
     </AppBar>
+  );
+};
+
+export type AppNavigationProps = {
+  naviOpen: boolean;
+};
+const AppNavigationDrawer: React.VFC<AppNavigationProps> = ({ naviOpen }) => {
+  return (
+    <Box
+      width={naviOpen ? '240px' : '64px'}
+      sx={{
+        overflowY: 'auto',
+        transition: 'width 0.2s ease',
+      }}
+    >
+      <List>
+        <NaviMenuButton open={naviOpen} icon={<HomeIcon />} label="Home" />
+        <NaviMenuButton open={naviOpen} icon={<DashboardIcon />} label="Dashboard" />
+        <NaviMenuButton open={naviOpen} icon={<GroupIcon />} label="Groups" />
+        <NaviMenuButton open={naviOpen} icon={<SettingsIcon />} label="Settings" />
+      </List>
+    </Box>
+  );
+};
+
+export type NaviMenuButtonProps = {
+  open: boolean;
+  icon: React.ReactNode;
+  label: string;
+};
+const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label }) => {
+  return (
+    <ListItemButton
+      sx={{
+        minHeight: 48,
+        justifyContent: open ? 'initial' : 'center',
+        px: 2.5,
+      }}
+    >
+      <ListItemIcon
+        sx={{
+          minWidth: 0,
+          mr: open ? 3 : 'auto',
+          justifyContent: 'center',
+        }}
+      >
+        {icon}
+      </ListItemIcon>
+      <ListItemText primary={label} sx={{ opacity: open ? 1 : 0 }} />
+    </ListItemButton>
   );
 };
