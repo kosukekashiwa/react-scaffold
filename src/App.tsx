@@ -1,3 +1,5 @@
+import React, { useCallback, useState } from 'react';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -11,8 +13,6 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { blue } from '@mui/material/colors';
-import React, { useCallback, useState } from 'react';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
 
 export const App: React.VFC = () => {
@@ -80,20 +80,20 @@ const AppLayout: React.VFC<AppLayoutProps> = ({
             <ListItemButton
               sx={{
                 minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
+                justifyContent: naviOpen ? 'initial' : 'center',
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
-                  mr: open ? 3 : 'auto',
+                  mr: naviOpen ? 3 : 'auto',
                   justifyContent: 'center',
                 }}
               >
                 <MenuOpenIcon />
               </ListItemIcon>
-              <ListItemText primary={'hoge'} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary={'hoge'} sx={{ opacity: naviOpen ? 1 : 0 }} />
             </ListItemButton>
           </List>
         </Box>
@@ -113,39 +113,6 @@ const AppLayout: React.VFC<AppLayoutProps> = ({
   );
 };
 
-// ヘッダとコンテンツを並べるComponent仮実装
-// type AppContainerProps = {
-//   children: React.ReactNode;
-// };
-// const AppContainer: React.VFC<AppContainerProps> = (props) => {
-//   return (
-//     <Box display="flex" flexDirection="column" height="100vh">
-//       {props.children}
-//     </Box>
-//   );
-// };
-
-// コンテンツを表示するComponent仮実装
-// type MainContainerProps = {
-//   children: React.ReactNode;
-// };
-// const MainContainer: React.VFC<MainContainerProps> = (props) => {
-//   return (
-//     <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
-//       <Box
-//         minWidth={`${FLEXIBLE_MIN_WIDTH}px`}
-//         maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
-//         margin="auto"
-//         px="32px"
-//         py="16px"
-//       >
-//         {props.children}
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// ヘッダComponent仮実装
 export type AppHeaderProps = {
   naviOpen: boolean;
   onMenuIconClick: () => void;
@@ -161,8 +128,6 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
       <Toolbar
         sx={{
           width: '100vw',
-          // minWidth: `${FLEXIBLE_MIN_WIDTH}px`,
-          // maxWidth: `${FLEXIBLE_MAX_WIDTH}px`,
           margin: 'auto',
         }}
       >
