@@ -294,7 +294,7 @@ const OverView: React.VFC = () => {
   const pallete = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
   return (
     <Box>
-      <Box>OverView (scroll check)</Box>
+      <Box>OverView (スクロール確認)</Box>
       <Stack>
         {pallete.map((code) => (
           <Box

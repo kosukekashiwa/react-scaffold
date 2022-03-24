@@ -16,6 +16,7 @@ const theme = createTheme({
           minWidth: `${FLEXIBLE_MIN_WIDTH}px`,
           color: '#333333',
           backgroundColor: blueGrey[50],
+          fontFamily: ['Noto Sans', 'Noto Sans JP', 'sans-serif'].join(','),
         },
       },
     },
