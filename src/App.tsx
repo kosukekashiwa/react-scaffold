@@ -16,7 +16,7 @@ import NestedNaviMenuButton, {
 
 const NAVIGATION_WIDTH = 240;
 
-export const App: React.VFC = () => {
+const App: React.VFC = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -123,7 +123,7 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
   onAppTitleClick,
 }) => {
   return (
-    <AppBar sx={{ backgroundColor: blue[900], zIndex: 1 }} position="static">
+    <AppBar sx={{ backgroundColor: blue[900] }} position="static">
       <Toolbar
         sx={{
           width: '100vw',
@@ -227,3 +227,5 @@ const OverView: React.VFC = () => {
     </Box>
   );
 };
+
+export default App;

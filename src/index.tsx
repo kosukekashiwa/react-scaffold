@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { App } from '../src/App';
+import App from '../src/App';
 import theme from './views/theme';
 
 ReactDOM.render(
