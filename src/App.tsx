@@ -1,28 +1,18 @@
 import React, { useCallback, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import {
-  AppBar,
-  Box,
-  Button,
-  Collapse,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  Toolbar,
-} from '@mui/material';
+import { AppBar, Box, Button, IconButton, List, Stack, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
 import SettingsIcon from '@mui/icons-material/Settings';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import { blue, blueGrey } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import { FLEXIBLE_MAX_WIDTH, FLEXIBLE_MIN_WIDTH } from './views/theme';
+import NaviMenuButton from './views/atoms/buttons/NaviMenuButton';
+import NestedNaviMenuButton, {
+  NestedNaviMenuButtonProps,
+} from './views/atoms/buttons/NestedNaviMenuButton';
 
 const NAVIGATION_WIDTH = 240;
 
@@ -106,8 +96,8 @@ const AppLayout: React.VFC = () => {
         />
         <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
           <Box
-            minWidth={`calc(${FLEXIBLE_MIN_WIDTH} - ${naviOpen ? NAVIGATION_WIDTH : 0})px`}
-            maxWidth={`calc(${FLEXIBLE_MAX_WIDTH} - ${naviOpen ? NAVIGATION_WIDTH : 0})px`}
+            minWidth={`calc(${FLEXIBLE_MIN_WIDTH}px - ${naviOpen ? NAVIGATION_WIDTH : 0}px)`}
+            maxWidth={`calc(${FLEXIBLE_MAX_WIDTH}px - ${naviOpen ? NAVIGATION_WIDTH : 0}px)`}
             margin="auto"
             px="32px"
             py="16px"
@@ -188,106 +178,31 @@ const AppNavigationDrawer: React.VFC<AppNavigationDrawerProps> = ({
   onGroupsIconClick,
   onSettingsIconClick,
 }) => {
-  const [dashboardMenuOpen, setDashboardMenuOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setDashboardMenuOpen(!dashboardMenuOpen);
-  };
+  const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
+    { label: 'Q4 Milestones', onClick: onQ4MilestonesClick },
+    { label: 'Releases', onClick: onReleasesClick },
+    { label: 'Site Traffic', onClick: onSiteTrafficClick },
+  ];
 
   return (
     <Box
       width={naviOpen ? `${NAVIGATION_WIDTH}px` : '0px'}
-      // width={naviOpen ? `${NAVIGATION_WIDTH}px` : '64px'}
       sx={{
-        background: blueGrey[100],
         overflowY: 'auto',
         transition: 'width 0.2s ease',
       }}
     >
       <List>
-        <NaviMenuButton
-          open={naviOpen}
-          icon={<HomeIcon />}
-          label="Home"
-          onClick={onHomeIconClick}
+        <NaviMenuButton icon={<HomeIcon />} label="Home" onClick={onHomeIconClick} />
+        <NestedNaviMenuButton
+          icon={<DashboardIcon />}
+          label="Dashboard"
+          items={dashboardMenuItems}
         />
-        <ListItemButton
-          onClick={handleClick}
-          sx={{
-            minHeight: 48,
-            justifyContent: naviOpen ? 'initial' : 'center',
-            px: 2.5,
-          }}
-        >
-          <ListItemIcon
-            sx={{
-              minWidth: 0,
-              mr: naviOpen ? 3 : 'auto',
-              justifyContent: 'center',
-            }}
-          >
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" sx={{ opacity: naviOpen ? 1 : 0 }} />
-          {naviOpen && <>{dashboardMenuOpen ? <ExpandLess /> : <ExpandMore />}</>}
-        </ListItemButton>
-        <Collapse in={dashboardMenuOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 9, whiteSpace: 'nowrap' }} onClick={onQ4MilestonesClick}>
-              <ListItemText primary="Q4 Milestones" sx={{ opacity: naviOpen ? 1 : 0 }} />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 9 }} onClick={onReleasesClick}>
-              <ListItemText primary="Releases" sx={{ opacity: naviOpen ? 1 : 0 }} />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 9, whiteSpace: 'nowrap' }} onClick={onSiteTrafficClick}>
-              <ListItemText primary="Site Traffic" sx={{ opacity: naviOpen ? 1 : 0 }} />
-            </ListItemButton>
-          </List>
-        </Collapse>
-        <NaviMenuButton
-          open={naviOpen}
-          icon={<GroupIcon />}
-          label="Groups"
-          onClick={onGroupsIconClick}
-        />
-        <NaviMenuButton
-          open={naviOpen}
-          icon={<SettingsIcon />}
-          label="Settings"
-          onClick={onSettingsIconClick}
-        />
+        <NaviMenuButton icon={<GroupIcon />} label="Groups" onClick={onGroupsIconClick} />
+        <NaviMenuButton icon={<SettingsIcon />} label="Settings" onClick={onSettingsIconClick} />
       </List>
     </Box>
-  );
-};
-
-export type NaviMenuButtonProps = {
-  open: boolean;
-  icon: React.ReactNode;
-  label: string;
-  onClick: () => void;
-};
-const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ open, icon, label, onClick }) => {
-  return (
-    <ListItemButton
-      onClick={onClick}
-      sx={{
-        minHeight: 48,
-        justifyContent: open ? 'initial' : 'center',
-        px: 2.5,
-      }}
-    >
-      <ListItemIcon
-        sx={{
-          minWidth: 0,
-          mr: open ? 3 : 'auto',
-          justifyContent: 'center',
-        }}
-      >
-        {icon}
-      </ListItemIcon>
-      <ListItemText primary={label} sx={{ opacity: open ? 1 : 0 }} />
-    </ListItemButton>
   );
 };
 
