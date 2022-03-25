@@ -19,7 +19,7 @@ const NestedNaviMenuButton: React.VFC<NestedNaviMenuButtonProps> = ({ icon, labe
   return (
     <>
       <BaseNaviMenuButton onClick={handleClick} icon={icon}>
-        <ListItemText primary={label} />
+        <ListItemText primary={label} sx={{ whiteSpace: 'nowrap' }} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </BaseNaviMenuButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
