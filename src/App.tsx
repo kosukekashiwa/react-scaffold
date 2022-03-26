@@ -48,12 +48,7 @@ const AppLayout: React.VFC = () => {
   const [naviOpen, setNaviOpen] = useState(true);
 
   useEffect(() => {
-    if (isTab) {
-      setNaviOpen(false);
-    }
-    if (!isTab) {
-      setNaviOpen(true);
-    }
+    setNaviOpen(!isTab);
   }, [isTab]);
 
   const handleMenuIconClick = useCallback((): void => {
