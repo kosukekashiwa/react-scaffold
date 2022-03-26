@@ -12,6 +12,8 @@ import NestedNaviMenuButton, {
   NestedNaviMenuButtonProps,
 } from './views/atoms/buttons/NestedNaviMenuButton';
 import AppHeader, { APP_HEADER_HEIGHT } from './views/ecosystems/AppHeader';
+import NavigationDrawer from './views/organisms/NavigationDrawer';
+import SPNavigationDrawer from './views/organisms/SPNavigationDrawer';
 
 const NAVIGATION_WIDTH = 240;
 
@@ -83,6 +85,20 @@ const AppLayout: React.VFC = () => {
     navigate('settings');
   }, [navigate]);
 
+  const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
+    { label: 'Q4 Milestones', onClick: handleQ4MilestonesClick },
+    { label: 'Releases', onClick: handleReleasesClick },
+    { label: 'Site Traffic', onClick: handleSiteTrafficClick },
+  ];
+  const menuList: React.ReactNode = (
+    <List>
+      <NaviMenuButton icon={<HomeIcon />} label="Home" onClick={handleHomeIconClick} />
+      <NestedNaviMenuButton icon={<DashboardIcon />} label="Dashboard" items={dashboardMenuItems} />
+      <NaviMenuButton icon={<GroupIcon />} label="Groups" onClick={handleGroupsIconClick} />
+      <NaviMenuButton icon={<SettingsIcon />} label="Settings" onClick={handleSettingsIconClick} />
+    </List>
+  );
+
   return (
     <Box display="flex" flexDirection="column" height="100vh">
       <AppHeader
@@ -98,120 +114,24 @@ const AppLayout: React.VFC = () => {
       >
         {isTab ? (
           <SPNavigationDrawer
-            naviOpen={naviOpen}
-            onHomeIconClick={handleHomeIconClick}
-            onQ4MilestonesClick={handleQ4MilestonesClick}
-            onReleasesClick={handleReleasesClick}
-            onSiteTrafficClick={handleSiteTrafficClick}
-            onGroupsIconClick={handleGroupsIconClick}
-            onSettingsIconClick={handleSettingsIconClick}
-          />
+            open={naviOpen}
+            width={NAVIGATION_WIDTH}
+            top={APP_HEADER_HEIGHT}
+            onClose={handleMenuOpenIconClick}
+          >
+            {menuList}
+          </SPNavigationDrawer>
         ) : (
-          <NavigationDrawer
-            naviOpen={naviOpen}
-            onHomeIconClick={handleHomeIconClick}
-            onQ4MilestonesClick={handleQ4MilestonesClick}
-            onReleasesClick={handleReleasesClick}
-            onSiteTrafficClick={handleSiteTrafficClick}
-            onGroupsIconClick={handleGroupsIconClick}
-            onSettingsIconClick={handleSettingsIconClick}
-          />
+          <NavigationDrawer open={naviOpen} width={NAVIGATION_WIDTH}>
+            {menuList}
+          </NavigationDrawer>
         )}
-
         <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
           <Box maxWidth={`${FLEXIBLE_MAX_WIDTH}px`} margin="auto" px="32px" py="16px">
             <Outlet />
           </Box>
         </Box>
       </Box>
-    </Box>
-  );
-};
-
-export type SPNavigationDrawerProps = {
-  naviOpen: boolean;
-  onHomeIconClick: () => void;
-  onQ4MilestonesClick: () => void;
-  onReleasesClick: () => void;
-  onSiteTrafficClick: () => void;
-  onGroupsIconClick: () => void;
-  onSettingsIconClick: () => void;
-};
-const SPNavigationDrawer: React.VFC<SPNavigationDrawerProps> = ({
-  naviOpen,
-  onHomeIconClick,
-  onQ4MilestonesClick,
-  onReleasesClick,
-  onSiteTrafficClick,
-  onGroupsIconClick,
-  onSettingsIconClick,
-}) => {
-  const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
-    { label: 'Q4 Milestones', onClick: onQ4MilestonesClick },
-    { label: 'Releases', onClick: onReleasesClick },
-    { label: 'Site Traffic', onClick: onSiteTrafficClick },
-  ];
-
-  return (
-    <Backdrop open={naviOpen} sx={{ top: APP_HEADER_HEIGHT, display: 'inline' }}>
-      <Box sx={{ background: '#ffffff', width: `${NAVIGATION_WIDTH}px` }}>
-        <List>
-          <NaviMenuButton icon={<HomeIcon />} label="Home" onClick={onHomeIconClick} />
-          <NestedNaviMenuButton
-            icon={<DashboardIcon />}
-            label="Dashboard"
-            items={dashboardMenuItems}
-          />
-          <NaviMenuButton icon={<GroupIcon />} label="Groups" onClick={onGroupsIconClick} />
-          <NaviMenuButton icon={<SettingsIcon />} label="Settings" onClick={onSettingsIconClick} />
-        </List>
-      </Box>
-    </Backdrop>
-  );
-};
-
-export type NavigationDrawerProps = {
-  naviOpen: boolean;
-  onHomeIconClick: () => void;
-  onQ4MilestonesClick: () => void;
-  onReleasesClick: () => void;
-  onSiteTrafficClick: () => void;
-  onGroupsIconClick: () => void;
-  onSettingsIconClick: () => void;
-};
-const NavigationDrawer: React.VFC<NavigationDrawerProps> = ({
-  naviOpen,
-  onHomeIconClick,
-  onQ4MilestonesClick,
-  onReleasesClick,
-  onSiteTrafficClick,
-  onGroupsIconClick,
-  onSettingsIconClick,
-}) => {
-  const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
-    { label: 'Q4 Milestones', onClick: onQ4MilestonesClick },
-    { label: 'Releases', onClick: onReleasesClick },
-    { label: 'Site Traffic', onClick: onSiteTrafficClick },
-  ];
-
-  return (
-    <Box
-      width={naviOpen ? `${NAVIGATION_WIDTH}px` : '0px'}
-      sx={{
-        overflowY: 'auto',
-        transition: 'width 0.2s ease',
-      }}
-    >
-      <List>
-        <NaviMenuButton icon={<HomeIcon />} label="Home" onClick={onHomeIconClick} />
-        <NestedNaviMenuButton
-          icon={<DashboardIcon />}
-          label="Dashboard"
-          items={dashboardMenuItems}
-        />
-        <NaviMenuButton icon={<GroupIcon />} label="Groups" onClick={onGroupsIconClick} />
-        <NaviMenuButton icon={<SettingsIcon />} label="Settings" onClick={onSettingsIconClick} />
-      </List>
     </Box>
   );
 };
