@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import { Backdrop, Box, List, Stack, Theme, useMediaQuery } from '@mui/material';
+import { Box, List, Stack, Theme, useMediaQuery } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
@@ -13,9 +13,7 @@ import NestedNaviMenuButton, {
 } from './views/atoms/buttons/NestedNaviMenuButton';
 import AppHeader, { APP_HEADER_HEIGHT } from './views/ecosystems/AppHeader';
 import NavigationDrawer from './views/organisms/NavigationDrawer';
-import SPNavigationDrawer from './views/organisms/SPNavigationDrawer';
-
-const NAVIGATION_WIDTH = 240;
+import ModalNavigationDrawer from './views/organisms/ModalNavigationDrawer';
 
 const App: React.VFC = () => {
   return (
@@ -41,15 +39,19 @@ const App: React.VFC = () => {
 };
 
 const AppLayout: React.VFC = () => {
-  const isTab = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'), {
+  const MAIN_CONTENT_PX = 40;
+  const MAIN_CONTENT_PY = 24;
+  const NAVIGATION_WIDTH = 280;
+
+  const isLaptop = useMediaQuery((theme: Theme) => theme.breakpoints.down('desktop'), {
     noSsr: true,
   });
   const navigate = useNavigate();
   const [naviOpen, setNaviOpen] = useState(true);
 
   useEffect(() => {
-    setNaviOpen(!isTab);
-  }, [isTab]);
+    setNaviOpen(!isLaptop);
+  }, [isLaptop]);
 
   const handleMenuIconClick = useCallback((): void => {
     setNaviOpen(true);
@@ -58,27 +60,36 @@ const AppLayout: React.VFC = () => {
     setNaviOpen(false);
   }, []);
 
+  const handleNavigation = useCallback(
+    (path: string): void => {
+      navigate(path);
+      if (isLaptop) {
+        setNaviOpen(false);
+      }
+    },
+    [navigate, isLaptop],
+  );
   const handleAppTitleClick = useCallback((): void => {
-    navigate('/');
-  }, [navigate]);
+    handleNavigation('/');
+  }, [handleNavigation]);
   const handleHomeIconClick = useCallback((): void => {
-    navigate('home');
-  }, [navigate]);
+    handleNavigation('home');
+  }, [handleNavigation]);
   const handleQ4MilestonesClick = useCallback((): void => {
-    navigate('dashboard/q4-milestones');
-  }, [navigate]);
+    handleNavigation('dashboard/q4-milestones');
+  }, [handleNavigation]);
   const handleReleasesClick = useCallback((): void => {
-    navigate('dashboard/releases');
-  }, [navigate]);
+    handleNavigation('dashboard/releases');
+  }, [handleNavigation]);
   const handleSiteTrafficClick = useCallback((): void => {
-    navigate('dashboard/site-traffic');
-  }, [navigate]);
+    handleNavigation('dashboard/site-traffic');
+  }, [handleNavigation]);
   const handleGroupsIconClick = useCallback((): void => {
-    navigate('groups');
-  }, [navigate]);
+    handleNavigation('groups');
+  }, [handleNavigation]);
   const handleSettingsIconClick = useCallback((): void => {
-    navigate('settings');
-  }, [navigate]);
+    handleNavigation('settings');
+  }, [handleNavigation]);
 
   const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
     { label: 'Q4 Milestones', onClick: handleQ4MilestonesClick },
@@ -104,25 +115,30 @@ const AppLayout: React.VFC = () => {
       />
       <Box
         display="flex"
-        height={`calc(100% - ${APP_HEADER_HEIGHT}px - 64px)`} // padding:64px(32px*2)
+        height={`calc(100% - ${APP_HEADER_HEIGHT}px - ${MAIN_CONTENT_PX * 2}px)`}
         flexGrow={1}
       >
-        {isTab ? (
-          <SPNavigationDrawer
+        {isLaptop ? (
+          <ModalNavigationDrawer
             open={naviOpen}
             width={NAVIGATION_WIDTH}
             top={APP_HEADER_HEIGHT}
             onClose={handleMenuOpenIconClick}
           >
             {menuList}
-          </SPNavigationDrawer>
+          </ModalNavigationDrawer>
         ) : (
           <NavigationDrawer open={naviOpen} width={NAVIGATION_WIDTH}>
             {menuList}
           </NavigationDrawer>
         )}
         <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
-          <Box maxWidth={`${FLEXIBLE_MAX_WIDTH}px`} margin="auto" px="32px" py="16px">
+          <Box
+            maxWidth={`${FLEXIBLE_MAX_WIDTH}px`}
+            margin="auto"
+            px={`${MAIN_CONTENT_PX}px`}
+            py={`${MAIN_CONTENT_PY}px`}
+          >
             <Outlet />
           </Box>
         </Box>
