@@ -43,7 +43,7 @@ const AppLayout: React.VFC = () => {
   const MAIN_CONTENT_PY = 24;
   const NAVIGATION_WIDTH = 280;
 
-  const isLaptop = useMediaQuery((theme: Theme) => theme.breakpoints.down('desktop'), {
+  const isLaptop = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'), {
     noSsr: true,
   });
   const navigate = useNavigate();

@@ -3,20 +3,6 @@ import { blue, blueGrey } from '@mui/material/colors';
 
 export const FLEXIBLE_MAX_WIDTH = 1280;
 
-declare module '@mui/material/styles' {
-  interface BreakpointOverrides {
-    xs: false; // removes the `xs` breakpoint
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
-    mobile: true; // adds the `mobile` breakpoint
-    tablet: true;
-    laptop: true;
-    desktop: true;
-  }
-}
-
 const theme = createTheme({
   palette: {
     primary: blue,
@@ -24,10 +10,11 @@ const theme = createTheme({
   },
   breakpoints: {
     values: {
-      mobile: 0,
-      tablet: 600,
-      laptop: 1024,
-      desktop: 1384,
+      xs: 0, // mobile
+      sm: 600, // tablet
+      md: 1024, // laptop
+      lg: 1384, // desktop
+      xl: 1536,
     },
   },
   components: {
