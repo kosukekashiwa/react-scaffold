@@ -1,21 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import { Box, List, Stack, Theme, useMediaQuery } from '@mui/material';
+import { Box, List, Theme, useMediaQuery } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { blue } from '@mui/material/colors';
-import { FLEXIBLE_MAX_WIDTH } from './views/theme';
-import NaviMenuButton from './views/atoms/buttons/NaviMenuButton';
+import { FLEXIBLE_MAX_WIDTH } from '../theme';
+import NaviMenuButton from '../atoms/buttons/NaviMenuButton';
 import NestedNaviMenuButton, {
   NestedNaviMenuButtonProps,
-} from './views/atoms/buttons/NestedNaviMenuButton';
-import AppHeader, { APP_HEADER_HEIGHT } from './views/ecosystems/AppHeader';
-import NavigationDrawer from './views/organisms/NavigationDrawer';
-import ModalNavigationDrawer from './views/organisms/ModalNavigationDrawer';
+} from '../atoms/buttons/NestedNaviMenuButton';
+import AppHeader, { APP_HEADER_HEIGHT } from '../ecosystems/AppHeader';
+import NavigationDrawer from '../organisms/NavigationDrawer';
+import ModalNavigationDrawer from '../organisms/ModalNavigationDrawer';
+import OverView from './OverView';
 
-const App: React.VFC = () => {
+const AppRouter: React.VFC = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -147,26 +147,4 @@ const AppLayout: React.VFC = () => {
   );
 };
 
-const OverView: React.VFC = () => {
-  const pallete = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-  return (
-    <Box>
-      <Box>OverView (スクロール確認)</Box>
-      <Stack>
-        {pallete.map((code) => (
-          <Box
-            key={code}
-            height={200}
-            width={100}
-            p={2}
-            sx={{ background: blue[code], color: code < 500 ? '#000000' : '#ffffff' }}
-          >
-            {code}
-          </Box>
-        ))}
-      </Stack>
-    </Box>
-  );
-};
-
-export default App;
+export default AppRouter;
