@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Button, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import { blue } from '@mui/material/colors';
+import { blueGrey } from '@mui/material/colors';
 
 export const APP_HEADER_HEIGHT = 64;
 
@@ -19,10 +19,14 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
   onAppTitleClick,
 }) => {
   return (
-    <AppBar sx={{ height: `${APP_HEADER_HEIGHT}px`, backgroundColor: blue[900] }} position="static">
+    <AppBar
+      sx={{ height: `${APP_HEADER_HEIGHT}px`, backgroundColor: blueGrey[50], boxShadow: 'none' }}
+      position="static"
+    >
       <Toolbar
         sx={{
           width: '100vw',
+          height: '100%',
         }}
       >
         {open ? (
@@ -30,9 +34,8 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
             onClick={onMenuOpenIconClick}
             size="large"
             edge="start"
-            color="inherit"
+            sx={{ color: '#1f1f1f' }}
             aria-label="menu"
-            sx={{ mr: 2 }}
           >
             <MenuOpenIcon />
           </IconButton>
@@ -41,16 +44,15 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
             onClick={onMenuIconClick}
             size="large"
             edge="start"
-            color="inherit"
+            sx={{ color: '#1f1f1f' }}
             aria-label="menu"
-            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
         )}
         <Button
           variant="text"
-          sx={{ color: '#ffffff', fontSize: '1rem' }}
+          sx={{ color: '#1f1f1f', fontSize: '1rem', ml: 2 }}
           onClick={onAppTitleClick}
         >
           React Scaffold

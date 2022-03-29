@@ -34,9 +34,17 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          color: '#333333',
-          backgroundColor: blueGrey[50],
+          color: '#1f1f1f',
+          backgroundColor: '#ffffff',
           fontFamily: ['Noto Sans', 'Noto Sans JP', 'sans-serif'].join(','),
+          boxSizing: 'border-box',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#1f1f1f',
         },
       },
     },

@@ -20,7 +20,6 @@ const ModalNavigationDrawer: React.VFC<ModalNavigationDrawerProps> = ({
 }) => {
   return (
     <Drawer
-      anchor="left"
       open={open}
       onClose={onClose}
       ModalProps={{ sx: { top: top } }}
