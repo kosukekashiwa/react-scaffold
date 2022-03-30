@@ -2,13 +2,13 @@ import React from 'react';
 import { ListItemText } from '@mui/material';
 import BaseNaviMenuButton, { BaseNaviMenuButtonProps } from './BaseNaviMenuButton';
 
-export type NaviMenuButtonProps = Pick<BaseNaviMenuButtonProps, 'icon' | 'onClick'> & {
+export type NaviMenuButtonProps = Pick<BaseNaviMenuButtonProps, 'onClick'> & {
   label: string;
 };
 
-const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ icon, label, onClick }) => {
+const NaviMenuButton: React.VFC<NaviMenuButtonProps> = ({ label, onClick }) => {
   return (
-    <BaseNaviMenuButton onClick={onClick} icon={icon}>
+    <BaseNaviMenuButton onClick={onClick}>
       <ListItemText primary={label} sx={{ whiteSpace: 'nowrap' }} />
     </BaseNaviMenuButton>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Stack } from '@mui/material';
+import { Box, Button, Grid, Stack } from '@mui/material';
 import { blue } from '@mui/material/colors';
 
 const OverView: React.VFC = () => {
@@ -7,7 +7,13 @@ const OverView: React.VFC = () => {
 
   return (
     <Box>
-      <Box>Grid Layout (レスポンシブ確認)</Box>
+      <Box>Button</Box>
+      <Box>
+        <Button variant="contained" color="primary">
+          Primary
+        </Button>
+      </Box>
+      <Box mt={2}>Grid Layout (レスポンシブ確認)</Box>
       <Grid container spacing={{ xs: 1, sm: 3 }}>
         {pallete.map((code) => (
           <Grid key={code} item xs={6} sm={3} md={1.5}>

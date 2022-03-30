@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import { Box, List, Theme, useMediaQuery } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import GroupIcon from '@mui/icons-material/Group';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { FLEXIBLE_MAX_WIDTH } from '../theme';
 import NaviMenuButton from '../atoms/buttons/NaviMenuButton';
 import NestedNaviMenuButton, {
@@ -98,10 +94,10 @@ const AppLayout: React.VFC = () => {
   ];
   const menuList: React.ReactNode = (
     <List>
-      <NaviMenuButton icon={<HomeIcon />} label="Home" onClick={handleHomeIconClick} />
-      <NestedNaviMenuButton icon={<DashboardIcon />} label="Dashboard" items={dashboardMenuItems} />
-      <NaviMenuButton icon={<GroupIcon />} label="Groups" onClick={handleGroupsIconClick} />
-      <NaviMenuButton icon={<SettingsIcon />} label="Settings" onClick={handleSettingsIconClick} />
+      <NaviMenuButton label="Home" onClick={handleHomeIconClick} />
+      <NestedNaviMenuButton label="Dashboard" items={dashboardMenuItems} />
+      <NaviMenuButton label="Groups" onClick={handleGroupsIconClick} />
+      <NaviMenuButton label="Settings" onClick={handleSettingsIconClick} />
     </List>
   );
 
