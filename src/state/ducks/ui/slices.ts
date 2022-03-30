@@ -1,12 +1,13 @@
+import { PaletteMode } from '@mui/material';
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
 export type UIState = {
-  darkMode: boolean;
+  paletteMode: PaletteMode;
 };
 
 const initialState: UIState = {
-  darkMode: false,
+  paletteMode: 'light',
 };
 
 // slices
@@ -15,10 +16,10 @@ export const uiSlice = createSlice({
   initialState,
   reducers: {
     darkModeOn: (state) => {
-      state.darkMode = true;
+      state.paletteMode = 'dark';
     },
     darkModeOff: (state) => {
-      state.darkMode = false;
+      state.paletteMode = 'light';
     },
   },
 });
@@ -27,6 +28,6 @@ export const uiSlice = createSlice({
 export const { darkModeOn, darkModeOff } = uiSlice.actions;
 
 // selectors
-export const isDarkModeOn = ({ ui }: RootState) => ui.darkMode;
+export const getPaletteMode = ({ ui }: RootState) => ui.paletteMode;
 
 export default uiSlice.reducer;

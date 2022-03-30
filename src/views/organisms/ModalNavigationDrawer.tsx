@@ -26,7 +26,7 @@ const ModalNavigationDrawer: React.VFC<ModalNavigationDrawerProps> = ({
       PaperProps={{
         sx: {
           height: 'auto',
-          maxHeight: `calc(100% - ${top}px - ${theme.spacing(
+          maxHeight: `calc(100% - ${top}px - ${theme().spacing(
             MODAL_NAVIGATION_MARGIN_SPACING * 2,
           )})`,
           width: `${width}px`,
