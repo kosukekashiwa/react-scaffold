@@ -2,7 +2,7 @@ import React from 'react';
 import { Drawer } from '@mui/material';
 import theme from '../theme';
 
-const MODAL_NAVIGATION_MARGIN_SPACING = 1;
+const MODAL_NAVIGATION_MARGIN = 1;
 
 export type ModalNavigationDrawerProps = {
   open: boolean;
@@ -26,12 +26,10 @@ const ModalNavigationDrawer: React.VFC<ModalNavigationDrawerProps> = ({
       PaperProps={{
         sx: {
           height: 'auto',
-          maxHeight: `calc(100% - ${top}px - ${theme().spacing(
-            MODAL_NAVIGATION_MARGIN_SPACING * 2,
-          )})`,
+          maxHeight: `calc(100% - ${top}px - ${theme().spacing(MODAL_NAVIGATION_MARGIN * 2)})`,
           width: `${width}px`,
           top: top,
-          m: MODAL_NAVIGATION_MARGIN_SPACING,
+          m: MODAL_NAVIGATION_MARGIN,
           borderRadius: 2,
         },
       }}

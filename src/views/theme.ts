@@ -1,17 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 import { blue, blueGrey } from '@mui/material/colors';
 import { PaletteMode } from '@mui/material';
+import { getLabelColor } from '../utils';
 
 export const FLEXIBLE_MAX_WIDTH = 1280;
 
 const fontFamily = ['Noto Sans', 'Noto Sans JP', 'sans-serif'].join(',');
 
-const theme = (mode?: PaletteMode) => {
+const theme = (paletteMode?: PaletteMode) => {
+  const labelColor = getLabelColor(paletteMode);
+
   return createTheme({
     palette: {
-      // primary: blue,
-      // secondary: blueGrey,
-      mode: mode ?? 'light',
+      primary: blue,
+      secondary: blueGrey,
+      mode: paletteMode ?? 'light',
     },
     breakpoints: {
       values: {
@@ -26,7 +29,7 @@ const theme = (mode?: PaletteMode) => {
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            // color: '#1f1f1f',
+            color: labelColor,
             fontFamily: fontFamily,
             boxSizing: 'border-box',
           },
@@ -35,7 +38,7 @@ const theme = (mode?: PaletteMode) => {
       MuiTypography: {
         styleOverrides: {
           root: {
-            // color: '#1f1f1f',
+            color: labelColor,
             fontFamily: fontFamily,
           },
         },

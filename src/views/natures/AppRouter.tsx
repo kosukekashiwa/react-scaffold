@@ -14,8 +14,6 @@ import AppHeader, { APP_HEADER_HEIGHT } from '../ecosystems/AppHeader';
 import NavigationDrawer from '../organisms/NavigationDrawer';
 import ModalNavigationDrawer from '../organisms/ModalNavigationDrawer';
 import OverView from './OverView';
-import { useAppDispatch } from '../hooks';
-import { darkModeOff, darkModeOn } from '../../state/ducks/ui/slices';
 
 const AppRouter: React.VFC = () => {
   return (
@@ -54,14 +52,6 @@ const AppLayout: React.VFC = () => {
   useEffect(() => {
     setNaviOpen(!isLaptop);
   }, [isLaptop]);
-
-  const dispatch = useAppDispatch();
-  const handleDarkModeOnIconClick = useCallback((): void => {
-    dispatch(darkModeOn());
-  }, []);
-  const handleDarkModeOffIconClick = useCallback((): void => {
-    dispatch(darkModeOff());
-  }, []);
 
   const handleMenuIconClick = useCallback((): void => {
     setNaviOpen(true);
@@ -122,8 +112,6 @@ const AppLayout: React.VFC = () => {
         onMenuIconClick={handleMenuIconClick}
         onMenuOpenIconClick={handleMenuOpenIconClick}
         onAppTitleClick={handleAppTitleClick}
-        onDarkModeOnIconClick={handleDarkModeOnIconClick}
-        onDarkModeOffIconClick={handleDarkModeOffIconClick}
       />
       <Box
         display="flex"
