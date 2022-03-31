@@ -1,3 +1,11 @@
+const hex2rgba = (hex: string, alpha: number): string => {
+  console.log(hex);
+  const red = parseInt(hex.substring(1, 3), 16);
+  const green = parseInt(hex.substring(3, 5), 16);
+  const blue = parseInt(hex.substring(5, 7), 16);
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+};
+
 export const greyPalette = {
   grey100: '#0E171F',
   grey090: '#1C2B36',
@@ -43,8 +51,20 @@ export const yellowPalette = {
   yellow050: '#B3870E',
   yellow040: '#D9A514',
   yellow030: '#F5C518',
-  yellow020: '#F7E379',
+  yellow20: '#F7E379',
   yellow010: '#FAF6CF',
+};
+export const limePalette = {
+  lime100: '#121A0D',
+  lime090: '#1C2E10',
+  lime080: '#254211',
+  lime070: '#2E5C0E',
+  lime060: '#3C7D0E',
+  lime050: '#52A31D',
+  lime040: '#78BF39',
+  lime030: '#AAD971',
+  lime020: '#D5F0B1',
+  lime010: '#EBF7DA',
 };
 export const greenPalette = {
   green100: '#081A15',
@@ -57,6 +77,30 @@ export const greenPalette = {
   green030: '#88DBA8',
   green020: '#C7EBD1',
   green010: '#EBF7ED',
+};
+export const tealPalette = {
+  teal100: '#0C1A19',
+  teal090: '#102E2D',
+  teal080: '#124241',
+  teal070: '#155C5E',
+  teal060: '#167B7D',
+  teal050: '#279C9C',
+  teal040: '#4EBFB9',
+  teal030: '#86D9D4',
+  teal020: '#BEEBE7',
+  teal010: '#EBF5F4',
+};
+export const turquoisePalette = {
+  turquoise100: '#0F181A',
+  turquoise090: '#102D33',
+  turquoise080: '#0C424D',
+  turquoise070: '#09596B',
+  turquoise060: '#067A91',
+  turquoise050: '#159AB3',
+  turquoise040: '#45BCD1',
+  turquoise030: '#81D8E6',
+  turquoise020: '#C7E8ED',
+  turquoise010: '#EBF5F4',
 };
 export const aquaPalette = {
   aqua100: '#0B1724',
@@ -82,6 +126,42 @@ export const bluePalette = {
   blue020: '#D4E4FA',
   blue010: '#F0F4FA',
 };
+export const ultramarinePalette = {
+  ultramarine100: '#141429',
+  ultramarine090: '#23254D',
+  ultramarine080: '#2F337D',
+  ultramarine070: '#3A45B0',
+  ultramarine060: '#545FE8',
+  ultramarine050: '#7681FC',
+  ultramarine040: '#A0A7FA',
+  ultramarine030: '#C2C7FC',
+  ultramarine020: '#DEE0FA',
+  ultramarine010: '#F2F3FA',
+};
+export const purplePalette = {
+  purple100: '#1C1229',
+  purple090: '#331F4D',
+  purple080: '#4C277D',
+  purple070: '#6B30AB',
+  purple060: '#8F49DE',
+  purple050: '#AC71F0',
+  purple040: '#C89AFC',
+  purple030: '#DABEFA',
+  purple020: '#EADCFC',
+  purple010: '#F7F2FC',
+};
+export const pinkPalette = {
+  pink100: '#241020',
+  pink090: '#47153F',
+  pink080: '#6B155A',
+  pink070: '#961574',
+  pink060: '#CC1D92',
+  pink050: '#ED4CB7',
+  pink040: '#FA87D4',
+  pink030: '#F7B7E2',
+  pink020: '#F7DAED',
+  pink010: '#FCF0F8',
+};
 
 export const palette = {
   white: '#FFFFFF',
@@ -90,9 +170,15 @@ export const palette = {
   ...redPalette,
   ...orangePalette,
   ...yellowPalette,
+  ...limePalette,
   ...greenPalette,
+  ...tealPalette,
+  ...turquoisePalette,
   ...aquaPalette,
   ...bluePalette,
+  ...ultramarinePalette,
+  ...purplePalette,
+  ...pinkPalette,
 };
 
 export const dt = {
@@ -111,6 +197,9 @@ export const dt = {
       success: palette.green060,
       successDark: palette.green030,
     },
+  },
+  surface: {
+    overlay: hex2rgba(palette.grey090, 0.8),
   },
   text: {
     primary: palette.grey090,

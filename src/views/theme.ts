@@ -40,6 +40,13 @@ const theme = (paletteMode?: PaletteMode) => {
           },
         },
       },
+      MuiBackdrop: {
+        styleOverrides: {
+          root: {
+            backgroundColor: dt.surface.overlay,
+          },
+        },
+      },
       MuiTypography: {
         styleOverrides: {
           root: {

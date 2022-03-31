@@ -5,9 +5,15 @@ import {
   redPalette,
   orangePalette,
   yellowPalette,
+  limePalette,
   greenPalette,
+  tealPalette,
+  turquoisePalette,
   aquaPalette,
   bluePalette,
+  ultramarinePalette,
+  purplePalette,
+  pinkPalette,
 } from '../designTokens';
 
 const OverView: React.VFC = () => {
@@ -19,9 +25,15 @@ const OverView: React.VFC = () => {
     redPalette,
     orangePalette,
     yellowPalette,
+    limePalette,
     greenPalette,
+    tealPalette,
+    turquoisePalette,
     aquaPalette,
     bluePalette,
+    ultramarinePalette,
+    purplePalette,
+    pinkPalette,
   ];
 
   return (
@@ -56,7 +68,7 @@ const OverView: React.VFC = () => {
         <Box key={idx} mt={{ xs: 1, sm: 3 }}>
           <Grid container spacing={{ xs: 1, sm: 3 }}>
             {Object.entries(pallete).map((item, idx) => (
-              <Grid key={idx} item xs={6} sm={3} md={1.5}>
+              <Grid key={idx} item sm={6} md={3}>
                 <Box p={2} sx={{ background: item[1], color: idx < 5 ? '#fff' : '#000' }}>
                   {item[0]}
                 </Box>
