@@ -23,8 +23,9 @@ const initialState: UserState = {
 };
 
 // apis
+const API_USERS = '/api/v1/users';
 export const fetchUsers = createAsyncThunk('user/getEntities', async () => {
-  const response = await client.get<User[]>(`/api/v1//users`);
+  const response = await client.get<User[]>(API_USERS);
   // ここで正規化する
   // reducerで正規化してはいけない
   const normalized = normalizeUsers(response.data);
@@ -36,16 +37,16 @@ export const fetchUsers = createAsyncThunk('user/getEntities', async () => {
   }
   return { user: { ids: [], entites: {} } };
 });
-export const fetchUser = createAsyncThunk('user/getEntity', async (id: number) => {
-  const response = await client.get<User>(`/users/${id}`);
-  return { user: { entity: response.data } };
-});
-export const postUser = createAsyncThunk('user/postEntity', async (name: string) => {
-  await client.post(`/users`, { name });
-});
-export const putUser = createAsyncThunk('user/putEntity', async (user: User) => {
-  await client.put(`/users/${user.id}`, { name: user.name });
-});
+// export const fetchUser = createAsyncThunk('user/getEntity', async (id: number) => {
+//   const response = await client.get<User>(`/users/${id}`);
+//   return { user: { entity: response.data } };
+// });
+// export const postUser = createAsyncThunk('user/postEntity', async (name: string) => {
+//   await client.post(`/users`, { name });
+// });
+// export const putUser = createAsyncThunk('user/putEntity', async (user: User) => {
+//   await client.put(`/users/${user.id}`, { name: user.name });
+// });
 // Userの削除はArticleとの不整合を考えないといけないので、一旦なし
 // export const deleteUser = createAsyncThunk('user/deleteEntity', async (id: number) => {
 //   await client.delete(`/users/${id}`);
@@ -69,21 +70,21 @@ export const userSlice = createSlice({
       state.data.ids = action.payload.user.ids;
       state.data.entities = action.payload.user.entites;
     });
-    builder.addCase(fetchUser.fulfilled, (state, action) => {
-      state.status = 'success';
-      // idsに取得したUserのidがなければ追加
-      if (!state.data.entities[action.payload.user.entity.id]) {
-        state.data.ids.push(action.payload.user.entity.id);
-      }
-      // stateのentitiesを更新
-      state.data.entities[action.payload.user.entity.id] = action.payload.user.entity;
-    });
-    builder.addCase(postUser.fulfilled, (state) => {
-      state.status = 'idle';
-    });
-    builder.addCase(putUser.fulfilled, (state) => {
-      state.status = 'idle';
-    });
+    // builder.addCase(fetchUser.fulfilled, (state, action) => {
+    //   state.status = 'success';
+    //   // idsに取得したUserのidがなければ追加
+    //   if (!state.data.entities[action.payload.user.entity.id]) {
+    //     state.data.ids.push(action.payload.user.entity.id);
+    //   }
+    //   // stateのentitiesを更新
+    //   state.data.entities[action.payload.user.entity.id] = action.payload.user.entity;
+    // });
+    // builder.addCase(postUser.fulfilled, (state) => {
+    //   state.status = 'idle';
+    // });
+    // builder.addCase(putUser.fulfilled, (state) => {
+    //   state.status = 'idle';
+    // });
     // chenge state by article
     builder.addCase(fetchArticles.fulfilled, (state, action) => {
       state.status = 'success';
