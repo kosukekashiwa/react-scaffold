@@ -19,7 +19,7 @@ const CheckFetchView: React.VFC = () => {
   useFetch(userDataStatus, userStateIdling, fetchUsers());
 
   //  srticle単一fetch
-  const artcle = useAppSelector((state: RootState) => getArticle(state, 0));
+  const article = useAppSelector((state: RootState) => getArticle(state, 0));
   const dispatch = useAppDispatch();
   const handleFetchButtonClick = useCallback(() => {
     dispatch(fetchArticle(0));
@@ -37,7 +37,7 @@ const CheckFetchView: React.VFC = () => {
         <Button variant="contained" onClick={handleFetchButtonClick}>
           Fetch
         </Button>
-        {artcle && <Box>{artcle.title}</Box>}
+        {article && <Box>{article.title}</Box>}
       </Box>
     </Box>
   );
