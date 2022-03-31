@@ -8,8 +8,9 @@
     "build": "webpack",
     "dev": "webpack serve --open",
     "mock:genDb": "node genDb.js > db.json",
-    "mock:server": "json-server --watch db.json --port 3001",
-    "mock": "run-s mock:genDb mock:server"
+    "mock:server": "json-server --watch db.json --routes jsonServerRoutes.json --port 3001",
+    "mock": "run-s mock:genDb mock:server",
+    "start": "run-p mock dev"
   },
   "keywords": [],
   "author": "",

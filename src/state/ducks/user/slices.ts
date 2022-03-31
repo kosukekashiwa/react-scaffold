@@ -24,7 +24,7 @@ const initialState: UserState = {
 
 // apis
 export const fetchUsers = createAsyncThunk('user/getEntities', async () => {
-  const response = await client.get<User[]>(`/users`);
+  const response = await client.get<User[]>(`/api/v1//users`);
   // ここで正規化する
   // reducerで正規化してはいけない
   const normalized = normalizeUsers(response.data);

@@ -39,6 +39,9 @@ module.exports = {
     },
     port: 3000,
     historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
