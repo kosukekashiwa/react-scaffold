@@ -68,9 +68,10 @@ const OverView: React.VFC = () => {
         <Box key={idx} mt={{ xs: 1, sm: 3 }}>
           <Grid container spacing={{ xs: 1, sm: 3 }}>
             {Object.entries(pallete).map((item, idx) => (
-              <Grid key={idx} item sm={6} md={3}>
+              <Grid key={idx} item xs={6} md={3}>
                 <Box p={2} sx={{ background: item[1], color: idx < 5 ? '#fff' : '#000' }}>
-                  {item[0]}
+                  <Box>{item[0]}</Box>
+                  <Box>{item[1]}</Box>
                 </Box>
               </Grid>
             ))}
