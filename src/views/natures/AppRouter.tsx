@@ -10,6 +10,7 @@ import AppHeader, { APP_HEADER_HEIGHT } from '../ecosystems/AppHeader';
 import NavigationDrawer from '../organisms/NavigationDrawer';
 import ModalNavigationDrawer from '../organisms/ModalNavigationDrawer';
 import OverView from './OverView';
+import CheckFetchView from './CheckFetchView';
 
 const AppRouter: React.VFC = () => {
   return (
@@ -18,7 +19,7 @@ const AppRouter: React.VFC = () => {
         <Route path={'/'} element={<Navigate to={'ui'} />} />
         <Route path="ui" element={<AppLayout />}>
           <Route index element={<OverView />} />
-          <Route path={'home'} element={<Box>Home</Box>} />
+          <Route path={'check-fetch'} element={<CheckFetchView />} />
           <Route path={'dashboard'}>
             <Route index element={<Navigate to={'q4-milestones'} />} />
             <Route path={'q4-milestones'} element={<Box>Q4 Milestones</Box>} />
@@ -68,8 +69,8 @@ const AppLayout: React.VFC = () => {
   const handleAppTitleClick = useCallback((): void => {
     handleNavigation('/');
   }, [handleNavigation]);
-  const handleHomeIconClick = useCallback((): void => {
-    handleNavigation('home');
+  const handleCheckFetchClick = useCallback((): void => {
+    handleNavigation('check-fetch');
   }, [handleNavigation]);
   const handleQ4MilestonesClick = useCallback((): void => {
     handleNavigation('dashboard/q4-milestones');
@@ -80,10 +81,10 @@ const AppLayout: React.VFC = () => {
   const handleSiteTrafficClick = useCallback((): void => {
     handleNavigation('dashboard/site-traffic');
   }, [handleNavigation]);
-  const handleGroupsIconClick = useCallback((): void => {
+  const handleGroupsClick = useCallback((): void => {
     handleNavigation('groups');
   }, [handleNavigation]);
-  const handleSettingsIconClick = useCallback((): void => {
+  const handleSettingsClick = useCallback((): void => {
     handleNavigation('settings');
   }, [handleNavigation]);
 
@@ -94,10 +95,10 @@ const AppLayout: React.VFC = () => {
   ];
   const menuList: React.ReactNode = (
     <List>
-      <NaviMenuButton label="Home" onClick={handleHomeIconClick} />
+      <NaviMenuButton label="Check Fetch" onClick={handleCheckFetchClick} />
       <NestedNaviMenuButton label="Dashboard" items={dashboardMenuItems} />
-      <NaviMenuButton label="Groups" onClick={handleGroupsIconClick} />
-      <NaviMenuButton label="Settings" onClick={handleSettingsIconClick} />
+      <NaviMenuButton label="Groups" onClick={handleGroupsClick} />
+      <NaviMenuButton label="Settings" onClick={handleSettingsClick} />
     </List>
   );
 
