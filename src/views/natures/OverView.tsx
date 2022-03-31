@@ -1,42 +1,70 @@
-import React from 'react';
-import { Box, Button, Grid, Stack } from '@mui/material';
-import { blue } from '@mui/material/colors';
+import React, { Fragment } from 'react';
+import { Box, Button, Grid } from '@mui/material';
+import {
+  greyPalette,
+  redPalette,
+  orangePalette,
+  yellowPalette,
+  greenPalette,
+  aquaPalette,
+  bluePalette,
+} from '../designTokens';
 
 const OverView: React.VFC = () => {
-  const pallete: number[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+  type Color = 'primary' | 'secondary' | 'error' | 'info' | 'warning' | 'success';
+  const colors: Color[] = ['primary', 'secondary', 'error', 'info', 'warning', 'success'];
+
+  const palettes = [
+    greyPalette,
+    redPalette,
+    orangePalette,
+    yellowPalette,
+    greenPalette,
+    aquaPalette,
+    bluePalette,
+  ];
 
   return (
     <Box>
       <Box>Button</Box>
       <Box>
-        <Button variant="contained" color="primary">
-          Primary
-        </Button>
-      </Box>
-      <Box mt={2}>Grid Layout (レスポンシブ確認)</Box>
-      <Grid container spacing={{ xs: 1, sm: 3 }}>
-        {pallete.map((code) => (
-          <Grid key={code} item xs={6} sm={3} md={1.5}>
-            <Box p={2} sx={{ background: blue[code], color: code < 500 ? '#000000' : '#ffffff' }}>
-              {code}
+        {colors.map((color) => (
+          <Fragment key={color}>
+            <Box>{color}</Box>
+            <Box display="flex">
+              <Box>
+                <Button variant="contained" color={color}>
+                  Contained
+                </Button>
+              </Box>
+              <Box ml={1}>
+                <Button variant="outlined" color={color}>
+                  Outlined
+                </Button>
+              </Box>
+              <Box ml={1}>
+                <Button variant="text" color={color}>
+                  Text
+                </Button>
+              </Box>
             </Box>
+          </Fragment>
+        ))}
+      </Box>
+      <Box mt={2}>Color Palette</Box>
+      {palettes.map((pallete, idx) => (
+        <Box key={idx} mt={{ xs: 1, sm: 3 }}>
+          <Grid container spacing={{ xs: 1, sm: 3 }}>
+            {Object.entries(pallete).map((item, idx) => (
+              <Grid key={idx} item xs={6} sm={3} md={1.5}>
+                <Box p={2} sx={{ background: item[1], color: idx < 5 ? '#fff' : '#000' }}>
+                  {item[0]}
+                </Box>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <Box mt={2}>OverView (スクロール確認)</Box>
-      <Stack>
-        {pallete.map((code) => (
-          <Box
-            key={code}
-            height={200}
-            width={100}
-            p={2}
-            sx={{ background: blue[code], color: code < 500 ? '#000000' : '#ffffff' }}
-          >
-            {code}
-          </Box>
-        ))}
-      </Stack>
+        </Box>
+      ))}
     </Box>
   );
 };
