@@ -2,13 +2,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import { Box, List, Theme, useMediaQuery } from '@mui/material';
 import { FLEXIBLE_MAX_WIDTH } from '../theme';
-import NaviMenuButton from '../atoms/buttons/NaviMenuButton';
+import NaviMenuButton from '../components/containers/NaviMenuButton';
 import NestedNaviMenuButton, {
   NestedNaviMenuButtonProps,
-} from '../atoms/buttons/NestedNaviMenuButton';
+} from '../components/containers/NestedNaviMenuButton';
 import AppHeader, { APP_HEADER_HEIGHT } from '../ecosystems/AppHeader';
-import NavigationDrawer from '../organisms/NavigationDrawer';
-import ModalNavigationDrawer from '../organisms/ModalNavigationDrawer';
+import NavigationDrawer from '../components/containers/NavigationDrawer';
+import ModalNavigationDrawer from '../components/containers/ModalNavigationDrawer';
 import OverView from './OverView';
 import CheckFetchView from './CheckFetchView';
 
