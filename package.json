@@ -10,7 +10,10 @@
     "mock:genDb": "node genDb.js > db.json",
     "mock:server": "json-server --watch db.json --routes jsonServerRoutes.json --port 3001",
     "mock": "run-s mock:genDb mock:server",
-    "start": "run-p mock dev"
+    "start": "run-p mock dev",
+    "tokne:genJson": "./node_modules/.bin/token-transformer tokens.json output.json",
+    "token:genToken": "style-dictionary build --config style-dictionary.config.json",
+    "token": "run-s tokne:genJson token:genToken"
   },
   "keywords": [],
   "author": "kosukekashiwa",
@@ -50,7 +53,9 @@
     "prettier": "^2.6.0",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
+    "style-dictionary": "^3.7.0",
     "style-loader": "^3.3.1",
+    "token-transformer": "^0.0.20",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.2",
     "webpack": "^5.70.0",

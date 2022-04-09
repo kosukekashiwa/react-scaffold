@@ -1,10 +1,10 @@
 import { PaletteMode } from '@mui/material';
-import { dt } from '../views/designTokens';
+import tokens from '../views/tokens';
 
 export const isDarkMode = (mode: PaletteMode): boolean => {
   return mode === 'dark';
 };
 
 export const getLabelColor = (mode: PaletteMode): string => {
-  return isDarkMode(mode) ? dt.text.reversed : dt.text.primary;
+  return isDarkMode(mode) ? tokens.color.text.reversed.value : tokens.color.text.primary.value;
 };

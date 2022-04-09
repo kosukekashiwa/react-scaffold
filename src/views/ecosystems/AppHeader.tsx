@@ -7,7 +7,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { darkModeOff, darkModeOn, getPaletteMode } from '../../state/ducks/ui/slices';
 import { getLabelColor, isDarkMode } from '../../utils';
-import { dt } from '../designTokens';
+import tokens from '../tokens';
 
 export const APP_HEADER_HEIGHT = 64;
 
@@ -41,7 +41,9 @@ const AppHeader: React.VFC<AppHeaderProps> = ({
     <AppBar
       sx={{
         height: `${APP_HEADER_HEIGHT}px`,
-        backgroundColor: darkMode ? dt.header.global.reversed : dt.header.global.primary,
+        backgroundColor: darkMode
+          ? tokens.color.header.global.reversed.value
+          : tokens.color.header.global.primary.value,
         boxShadow: 'none',
       }}
       position="static"

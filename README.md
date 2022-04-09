@@ -23,8 +23,11 @@ $ npm start
 - Design system
   - MUI: "^5.5.1"
   - emotion: "^11.8.2"
-  - ~~Atomic Design~~
+  - ~~ Atomic Design ~~
     - -> 模索中
   - Design tokens
+    - Figma Tokens (Figma Plugin)
+    - Token Transformer: "^0.0.20"
+    - Style Dictionary: "^3.7.0"
 - HTTP client
   - axios: "^0.26.1"

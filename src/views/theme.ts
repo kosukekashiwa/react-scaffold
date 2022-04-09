@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
 import { getLabelColor, isDarkMode } from '../utils';
-import { dt } from './designTokens';
+import tokens from './tokens';
 
 export const FLEXIBLE_MAX_WIDTH = 1280;
 
@@ -13,12 +13,36 @@ const theme = (paletteMode?: PaletteMode) => {
 
   return createTheme({
     palette: {
-      primary: { main: darkMode ? dt.mui.palette.primaryDark : dt.mui.palette.primary },
-      secondary: { main: darkMode ? dt.mui.palette.secondaryDark : dt.mui.palette.secondary },
-      error: { main: darkMode ? dt.mui.palette.errorDark : dt.mui.palette.error },
-      info: { main: darkMode ? dt.mui.palette.infoDark : dt.mui.palette.info },
-      warning: { main: darkMode ? dt.mui.palette.warningDark : dt.mui.palette.warning },
-      success: { main: darkMode ? dt.mui.palette.successDark : dt.mui.palette.success },
+      primary: {
+        main: darkMode
+          ? tokens.color.mui.palette.primaryDark.value
+          : tokens.color.mui.palette.primary.value,
+      },
+      secondary: {
+        main: darkMode
+          ? tokens.color.mui.palette.secondaryDark.value
+          : tokens.color.mui.palette.secondary.value,
+      },
+      error: {
+        main: darkMode
+          ? tokens.color.mui.palette.errorDark.value
+          : tokens.color.mui.palette.error.value,
+      },
+      info: {
+        main: darkMode
+          ? tokens.color.mui.palette.infoDark.value
+          : tokens.color.mui.palette.info.value,
+      },
+      warning: {
+        main: darkMode
+          ? tokens.color.mui.palette.warningDark.value
+          : tokens.color.mui.palette.warning.value,
+      },
+      success: {
+        main: darkMode
+          ? tokens.color.mui.palette.successDark.value
+          : tokens.color.mui.palette.success.value,
+      },
       mode: paletteMode ?? 'light',
     },
     breakpoints: {
@@ -40,13 +64,13 @@ const theme = (paletteMode?: PaletteMode) => {
           },
         },
       },
-      MuiBackdrop: {
-        styleOverrides: {
-          root: {
-            backgroundColor: dt.surface.overlay,
-          },
-        },
-      },
+      // MuiBackdrop: {
+      //   styleOverrides: {
+      //     root: {
+      //       backgroundColor: tokens.color.surface.overlay.value,
+      //     },
+      //   },
+      // },
       MuiTypography: {
         styleOverrides: {
           root: {
