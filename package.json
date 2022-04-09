@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "npm test -- --watch",
     "build": "webpack",
     "dev": "webpack serve --open",
     "mock:genDb": "node genDb.js > db.json",
