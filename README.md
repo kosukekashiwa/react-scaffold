@@ -31,3 +31,6 @@ $ npm start
     - Style Dictionary: "^3.7.0"
 - HTTP client
   - axios: "^0.26.1"
+- Test
+  - React Testing Library: "^12.1.4"
+  - Jest: "^27.5.1"
