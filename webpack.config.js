@@ -47,4 +47,5 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   target: 'web',
+  devtool: 'eval-source-map',
 };
