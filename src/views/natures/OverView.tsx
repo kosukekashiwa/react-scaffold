@@ -6,7 +6,7 @@ const OverView: React.VFC = () => {
   type Color = 'primary' | 'secondary' | 'error' | 'info' | 'warning' | 'success';
   const colors: Color[] = ['primary', 'secondary', 'error', 'info', 'warning', 'success'];
 
-  const handleButtonClick = useCallback(() => {
+  const handleButtonClick = useCallback((): void => {
     // No Action
   }, []);
 
