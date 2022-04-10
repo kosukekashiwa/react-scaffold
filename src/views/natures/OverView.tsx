@@ -1,9 +1,14 @@
-import React, { Fragment } from 'react';
-import { Box, Button } from '@mui/material';
+import React, { Fragment, useCallback } from 'react';
+import { Box } from '@mui/material';
+import Button from '../components/actions/Button';
 
 const OverView: React.VFC = () => {
   type Color = 'primary' | 'secondary' | 'error' | 'info' | 'warning' | 'success';
   const colors: Color[] = ['primary', 'secondary', 'error', 'info', 'warning', 'success'];
+
+  const handleButtonClick = useCallback(() => {
+    // No Action
+  }, []);
 
   return (
     <Box>
@@ -15,17 +20,17 @@ const OverView: React.VFC = () => {
             <Box>{color}</Box>
             <Box display="flex">
               <Box>
-                <Button variant="contained" color={color}>
+                <Button onClick={handleButtonClick} variant="contained" color={color}>
                   Contained
                 </Button>
               </Box>
               <Box ml={1}>
-                <Button variant="outlined" color={color}>
+                <Button onClick={handleButtonClick} variant="outlined" color={color}>
                   Outlined
                 </Button>
               </Box>
               <Box ml={1}>
-                <Button variant="text" color={color}>
+                <Button onClick={handleButtonClick} variant="text" color={color}>
                   Text
                 </Button>
               </Box>
