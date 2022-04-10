@@ -1,14 +1,14 @@
-# react-scaffold
+# React Scaffold
 
 `create-react-app`を使っていない App
 
-# Usage
+## Usage
 
 ```
 $ npm start
 ```
 
-# OSS
+## OSS
 
 - Language
   - Typescript: "^4.6.2"
