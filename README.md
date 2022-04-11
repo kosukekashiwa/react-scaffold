@@ -5,6 +5,9 @@
 
 ## Usage
 
+- Development Environment
+  `npm install` and
+
 ```
 $ npm start
 ```
