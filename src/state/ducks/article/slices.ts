@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { FetchStatus } from '../../../views/hooks';
 import { RootState } from '../../store';
 import { client } from '../apiClient';
 import { userNormalizrSchemaKey } from '../user/models';
+import { UserState } from '../user/slices';
 import {
   Article,
   NormalizedArticles,
@@ -11,7 +13,7 @@ import {
 } from './models';
 
 export type ArticleState = {
-  status: 'idle' | 'success';
+  status: FetchStatus;
   data: { ids: Article['id'][]; entities: NormalizedArticles };
 };
 
@@ -22,19 +24,33 @@ const initialState: ArticleState = {
 
 // apis
 const API_ARTICLES = '/api/v1/articles';
-export const fetchArticles = createAsyncThunk('article/getEntities', async () => {
-  const response = await client.get<Article[]>(API_ARTICLES);
-  const normalized = normalizeArticles(response.data);
-  if (normalized.result.length !== 0) {
+export const fetchArticles = createAsyncThunk<
+  {
+    article: ArticleState['data'];
+    user: { entities: UserState['data']['entities'] };
+  },
+  undefined,
+  { rejectValue: { errorMessage: string } }
+>('article/getEntities', async (_, thunkAPI) => {
+  try {
+    const response = await client.get<Article[]>(`/articles`);
+    const normalized = normalizeArticles(response.data);
+    if (normalized.result.length !== 0) {
+      return {
+        article: {
+          ids: normalized.result,
+          entities: normalized.entities[articleNormalizrSchemaKey],
+        },
+        user: { entities: normalized.entities[userNormalizrSchemaKey] },
+      };
+    }
     return {
-      article: { ids: normalized.result, entities: normalized.entities[articleNormalizrSchemaKey] },
-      user: { entities: normalized.entities[userNormalizrSchemaKey] },
+      article: { ids: [], entities: {} },
+      user: { entities: {} },
     };
+  } catch (e) {
+    return thunkAPI.rejectWithValue({ errorMessage: e.toString() });
   }
-  return {
-    article: { ids: [], entities: {} },
-    user: { entities: {} },
-  };
 });
 export const fetchArticle = createAsyncThunk('article/getEntity', async (id: number) => {
   const response = await client.get<Article>(`${API_ARTICLES}/${id}`);
@@ -62,6 +78,12 @@ export const articleSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchArticles.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(fetchArticles.pending, (state) => {
+      state.status = 'loading';
+    });
     builder.addCase(fetchArticles.fulfilled, (state, action) => {
       state.status = 'success';
       state.data.ids = action.payload.article.ids;

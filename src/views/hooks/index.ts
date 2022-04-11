@@ -7,8 +7,9 @@ import type { RootState, AppDispatch } from '../../state/store';
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
+export type FetchStatus = 'idle' | 'loading' | 'success' | 'failed';
 export const useFetch = (
-  dataStatus: 'idle' | 'success',
+  dataStatus: FetchStatus,
   stateIdlingAction: ActionCreatorWithoutPayload<string>,
   // eslint-disable-next-line
   fetchAction: ThunkAction<any, any, any, any>,

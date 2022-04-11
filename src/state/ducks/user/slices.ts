@@ -9,10 +9,11 @@ import {
 import { fetchArticle, fetchArticles } from '../article/slices';
 import { client } from '../apiClient';
 import { RootState } from '../../store';
+import { FetchStatus } from '../../../views/hooks';
 
 export type UserState = {
   // loading, error状態は実装しない
-  status: 'idle' | 'success';
+  status: FetchStatus;
   // 正規化したときの型と順序を保持する配列を持つObject
   data: { ids: User['id'][]; entities: NormalizedUsers };
 };
