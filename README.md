@@ -34,6 +34,7 @@ $ npm start
 - Test
   - React Testing Library: "^12.1.4"
   - Jest: "^27.5.1"
+  - MSW: "^0.39.2",
 
 ### License
 
