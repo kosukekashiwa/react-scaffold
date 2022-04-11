@@ -6,11 +6,12 @@
 ## Usage
 
 - Development Environment
+
   `npm install` and
 
-```
-$ npm start
-```
+  ```
+  $ npm start
+  ```
 
 ## OSS
 
