@@ -5,13 +5,23 @@
 
 ## Usage
 
-- Development Environment
+Run development environment.
 
-  `npm install` and
+```
+$ npm start
+```
 
-  ```
-  $ npm start
-  ```
+If you want to generate a `tokens.js`, export `tokens.json` from Figma Tokens and run:
+
+```
+$ npm run token
+```
+
+Run unit test in watch mode. Except `:watch` if you want to run it only once.
+
+```
+$ npm run test:watch
+```
 
 ## OSS
 
