@@ -1,6 +1,7 @@
 # React Scaffold
 
-`create-react-app`を使っていない App
+- [x] Dark Mode
+- [x] Responsive Design
 
 ## Usage
 
