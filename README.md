@@ -11,7 +11,7 @@ Run development environment.
 $ npm start
 ```
 
-If you want to generate a `tokens.js`, export `tokens.json` from Figma Tokens and run:
+If you want to generate a `tokens.js`, export `tokens.json` from [Figma Tokens](https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens) and run:
 
 ```
 $ npm run token
