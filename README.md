@@ -1,11 +1,13 @@
 # React Scaffold
 
+`Homebrew: v3.3.4` `Nodebrew: 1v.1.0` `Node: v16.13.0`
+
 - [x] Dark Mode
 - [x] Responsive Design
 
 ## Usage
 
-Run development environment.
+Run the app on development mode.
 
 ```
 $ npm start
@@ -39,7 +41,6 @@ $ npm run test:watch
   - MUI: "^5.5.1"
   - emotion: "^11.8.2"
   - ~~Atomic Design~~
-    - -> 模索中
   - Design tokens
     - Figma Tokens (Figma Plugin)
     - Token Transformer: "^0.0.20"
@@ -51,6 +52,36 @@ $ npm run test:watch
   - Jest: "^27.5.1"
   - MSW: "^0.39.2",
 
-### License
+## Views directory
+
+### Comparison with atomid design
+
+- atoms -> stytle
+- molecules, organisms -> components
+- templates -> ecosystems
+- pages -> natures
+
+### Components subdirectory
+
+- Actions
+  - buttons, button group, button select, collapse, dropdown, link
+- Containers
+  - button sheet, flex layout, horizontal scroll, image container, menu, react grid layout, side panel, side panel menu, toolbar
+- Content Display
+  - accordion, card, carousel, hero, icon, label, list group, person
+- Data Display
+  - avatar, charts, chart editor, graph, grid, metric, table, tree
+- Feedback
+  - alert, badge, modal, popover, steps, toast, tooltip
+- Forms & Inputs
+  - checkbox, datepicker, file upload, form, input, input group, input icon, input number, label, radio, select, slider, switch, textarea
+- Loading & Status
+  - loading, progress, pull to refresh, slelton loader
+- Navigational
+  - breadcrumb, header, menu, pagination, tabs, tree
+- Search & Filters
+  - queryfield, search, select, tag
+
+## License
 
 [MIT](./LICENSE).
