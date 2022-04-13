@@ -56,7 +56,7 @@ $ npm run test:watch
 
 ### Comparison with atomid design
 
-- atoms -> stytle
+- atoms -> stytle (MUI theme file, Design token file)
 - molecules, organisms -> components
 - templates -> ecosystems
 - pages -> natures
