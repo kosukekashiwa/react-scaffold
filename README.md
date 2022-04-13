@@ -64,23 +64,23 @@ $ npm run test:watch
 ### Components subdirectory
 
 - Actions
-  - buttons, button group, button select, collapse, dropdown, link
+  - `buttons` `button group` `button select` `collapse` `dropdown` `link`
 - Containers
-  - button sheet, flex layout, horizontal scroll, image container, menu, react grid layout, side panel, side panel menu, toolbar
+  - `button sheet` `flex layout` `horizontal scroll` `image container` `menu` `react grid layout` `side panel` `side panel menu` `toolbar`
 - Content Display
-  - accordion, card, carousel, hero, icon, label, list group, person
+  - `accordion` `card` `carousel` `hero` `icon` `label` `list group` `person`
 - Data Display
-  - avatar, charts, chart editor, graph, grid, metric, table, tree
+  - `avatar` `charts` `chart editor` `graph` `grid` `metric` `table` `tree`
 - Feedback
-  - alert, badge, modal, popover, steps, toast, tooltip
+  - `alert` `badge` `modal` `popover` `steps` `toast` `tooltip`
 - Forms & Inputs
-  - checkbox, datepicker, file upload, form, input, input group, input icon, input number, label, radio, select, slider, switch, textarea
+  - `checkbox` `datepicker` `file upload` `form` `input` `input group` `input icon` `input number` `label` `radio` `select` `slider` `switch` `textarea`
 - Loading & Status
-  - loading, progress, pull to refresh, slelton loader
+  - `loading` `progress` `pull to refresh` `slelton loader`
 - Navigational
-  - breadcrumb, header, menu, pagination, tabs, tree
+  - `breadcrumb` `header` `menu` `pagination` `tabs` `tree`
 - Search & Filters
-  - queryfield, search, select, tag
+  - `queryfield` `search` `select` `tag`
 
 ## License
 
