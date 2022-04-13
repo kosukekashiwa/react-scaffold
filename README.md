@@ -78,7 +78,7 @@ $ npm run test:watch
 - Loading & Status
   - `loading` `progress` `pull to refresh` `slelton loader`
 - Navigational
-  - `breadcrumb` `header` `menu` `pagination` `tabs` `tree`
+  - `breadcrumb` `header` ~~`menu`~~ `pagination` `tabs` ~~`tree`~~
 - Search & Filters
   - `queryfield` `search` `select` `tag`
 
