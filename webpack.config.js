@@ -1,7 +1,7 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -33,14 +33,19 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 3000,
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  plugins: [
-    new ESLintPlugin({
-      extensions: ['.ts', '.js'],
-      exclude: ['node_modules', 'tokens,js'],
-    }),
-  ],
   target: 'web',
+  devtool: 'eval-source-map',
 };

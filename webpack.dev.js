@@ -1,5 +1,4 @@
 const path = require('path');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -16,5 +15,4 @@ module.exports = merge(common, {
       '/api': 'http://localhost:3001',
     },
   },
-  plugins: [new HardSourceWebpackPlugin()],
 });
