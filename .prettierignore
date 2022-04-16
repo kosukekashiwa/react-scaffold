@@ -1,2 +1,6 @@
 build
 coverage
+tokens.js
+tokens.d.ts
+output.json
+tokens.json
