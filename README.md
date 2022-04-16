@@ -1,6 +1,6 @@
 # React Scaffold
 
-`Homebrew: v3.3.4` `Nodebrew: v1.1.0` `Node: v16.13.0`
+`Node: v16.13.0`
 
 - [x] Dark Mode
 - [x] Responsive Design
