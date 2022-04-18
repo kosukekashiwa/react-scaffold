@@ -1,6 +1,6 @@
 import { PaletteMode } from '@mui/material';
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
+import { RootState } from '~/state/store';
 
 export type UIState = {
   paletteMode: PaletteMode;

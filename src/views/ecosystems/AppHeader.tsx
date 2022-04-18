@@ -4,10 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { darkModeOff, darkModeOn, getPaletteMode } from '../../state/ducks/ui/slices';
-import { getLabelColor, isDarkMode } from '../../utils';
-import tokens from '../tokens';
+import { useAppDispatch, useAppSelector } from '~/views/hooks';
+import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices';
+import { isDarkMode, getLabelColor } from '~/utils';
+import tokens from '~/views/tokens';
 
 export const APP_HEADER_HEIGHT = 64;
 

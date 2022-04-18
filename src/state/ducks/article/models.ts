@@ -1,5 +1,10 @@
 import { denormalize, normalize, schema } from 'normalizr';
-import { NormalizedUsers, User, userNormalizrSchema, userNormalizrSchemaKey } from '../user/models';
+import {
+  User,
+  userNormalizrSchema,
+  userNormalizrSchemaKey,
+  NormalizedUsers,
+} from '~/state/ducks/user/models';
 
 export type Article = {
   id: number;

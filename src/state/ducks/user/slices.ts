@@ -6,10 +6,10 @@ import {
   normalizeUsers,
   denormalizeUsers,
 } from './models';
-import { fetchArticle, fetchArticles } from '../article/slices';
-import { client } from '../apiClient';
-import { RootState } from '../../store';
-import { FetchStatus } from '../../../views/hooks';
+import { FetchStatus } from '~/views/hooks';
+import { client } from '~/state/ducks/apiClient';
+import { fetchArticles, fetchArticle } from '~/state/ducks/article/slices';
+import { RootState } from '~/state/store';
 
 export type UserState = {
   // loading, error状態は実装しない
