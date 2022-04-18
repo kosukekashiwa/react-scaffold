@@ -1,6 +1,6 @@
 # React Scaffold
 
-`Node: v16.13.0`
+`Node: v16.13.0` `npm: v8.1.0`
 
 - [x] Dark Mode
 - [x] Responsive Design
