@@ -6,7 +6,7 @@ export type NavigationDrawerProps = {
   width: number;
   children: React.ReactNode;
 };
-const NavigationDrawer: React.VFC<NavigationDrawerProps> = ({ open, width, children }) => {
+const NavigationDrawer: React.FC<NavigationDrawerProps> = ({ open, width, children }) => {
   return (
     <Box
       width={open ? `${width}px` : '0px'}

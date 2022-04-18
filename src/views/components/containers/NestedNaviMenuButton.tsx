@@ -9,7 +9,7 @@ export type NestedNaviMenuButtonProps = {
   items: { label: string; onClick: () => void }[];
 };
 
-const NestedNaviMenuButton: React.VFC<NestedNaviMenuButtonProps> = ({ label, items }) => {
+const NestedNaviMenuButton: React.FC<NestedNaviMenuButtonProps> = ({ label, items }) => {
   const [open, setOpen] = useState<boolean>(true);
 
   const handleClick = useCallback((): void => {

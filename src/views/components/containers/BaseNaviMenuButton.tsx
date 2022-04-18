@@ -5,7 +5,7 @@ export type BaseNaviMenuButtonProps = {
   onClick: () => void;
   children: React.ReactNode;
 };
-const BaseNaviMenuButton: React.VFC<BaseNaviMenuButtonProps> = ({ onClick, children }) => {
+const BaseNaviMenuButton: React.FC<BaseNaviMenuButtonProps> = ({ onClick, children }) => {
   return (
     <ListItemButton
       onClick={onClick}

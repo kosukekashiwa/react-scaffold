@@ -11,7 +11,7 @@ export type ModalNavigationDrawerProps = {
   onClose: () => void;
   children: React.ReactNode;
 };
-const ModalNavigationDrawer: React.VFC<ModalNavigationDrawerProps> = ({
+const ModalNavigationDrawer: React.FC<ModalNavigationDrawerProps> = ({
   open,
   width,
   top,

@@ -17,7 +17,7 @@ export type AppHeaderProps = {
   onMenuOpenIconClick: () => void;
   onAppTitleClick: () => void;
 };
-const AppHeader: React.VFC<AppHeaderProps> = ({
+const AppHeader: React.FC<AppHeaderProps> = ({
   open,
   onMenuIconClick,
   onMenuOpenIconClick,

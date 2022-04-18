@@ -5,7 +5,7 @@ import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices
 import theme from '~/views/theme';
 import AppRouter from '~/views/natures/AppRouter';
 
-const App: React.VFC = () => {
+const App: React.FC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   const dispatch = useAppDispatch();

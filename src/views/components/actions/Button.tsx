@@ -6,7 +6,7 @@ export type ButtonProps = Required<Pick<MuiButtonProps, 'onClick'>> &
     children: React.ReactNode;
   };
 
-const Button: React.VFC<ButtonProps> = ({ onClick, variant, color, children }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, variant, color, children }) => {
   return (
     <MuiButton onClick={onClick} variant={variant} color={color}>
       {children}

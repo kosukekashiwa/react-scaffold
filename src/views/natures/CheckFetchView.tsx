@@ -10,7 +10,7 @@ import {
 import { RootState } from '~/state/store';
 import { getArticle, fetchArticle } from '~/state/ducks/article/slices';
 
-const CheckFetchView: React.VFC = () => {
+const CheckFetchView: React.FC = () => {
   // user stateのstatusを取得
   const userDataStatus = useAppSelector(getUserDataStatus);
   // storeのuser情報を取得

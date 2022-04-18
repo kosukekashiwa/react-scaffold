@@ -12,7 +12,7 @@ import ModalNavigationDrawer from '~/views/components/containers/ModalNavigation
 import NavigationDrawer from '~/views/components/containers/NavigationDrawer';
 import { FLEXIBLE_MAX_WIDTH } from '~/views/theme';
 
-const AppRouter: React.VFC = () => {
+const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -35,7 +35,7 @@ const AppRouter: React.VFC = () => {
   );
 };
 
-const AppLayout: React.VFC = () => {
+const AppLayout: React.FC = () => {
   const MAIN_CONTENT_PX = 40;
   const MAIN_CONTENT_PY = 24;
   const NAVIGATION_WIDTH = 280;
