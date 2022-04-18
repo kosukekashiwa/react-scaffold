@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Collapse, List, ListItemButton, ListItemText } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import BaseNaviMenuButton from './BaseNaviMenuButton';
+import BaseNaviMenuButton from '~/views/components/containers/BaseNaviMenuButton';
 
 export type NestedNaviMenuButtonProps = {
   label: string;

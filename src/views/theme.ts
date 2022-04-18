@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
-import { getLabelColor, isDarkMode } from '../utils';
-import tokens from './tokens';
+import { getLabelColor, isDarkMode } from '~/utils';
+import tokens from '~/views/tokens';
 
 export const FLEXIBLE_MAX_WIDTH = 1280;
 

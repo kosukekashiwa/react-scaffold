@@ -1,8 +1,8 @@
 import { rest } from 'msw';
 import React from 'react';
-import { server } from '../../mocks/server';
-import { render } from '../test-utils';
-import CheckFetchView from './CheckFetchView';
+import { render } from '~/views/test-utils';
+import CheckFetchView from '~/views/natures/CheckFetchView';
+import { server } from '~/mocks/server';
 
 describe('CheckFetchView tests', () => {
   // お試しtest

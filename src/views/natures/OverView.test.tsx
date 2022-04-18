@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '../test-utils';
-import OverView from './OverView';
+import { render, screen } from '~/views/test-utils';
+import OverView from '~/views/natures/OverView';
 
 describe('OverView tests', () => {
   describe('Initial render', () => {

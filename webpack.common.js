@@ -1,6 +1,8 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+const srcDir = 'src';
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -11,6 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
+        include: [path.resolve(__dirname, srcDir)],
         use: [
           {
             loader: 'babel-loader',
@@ -29,12 +32,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        include: [path.resolve(__dirname, srcDir)],
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      '~': path.resolve(__dirname, srcDir),
+    },
   },
   plugins: [
     new ESLintPlugin({

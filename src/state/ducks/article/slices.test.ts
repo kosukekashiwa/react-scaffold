@@ -1,4 +1,3 @@
-import { RootState } from '../../store';
 import {
   ArticleState,
   articleSlice,
@@ -8,7 +7,8 @@ import {
   getArticleDataStatus,
   getArticles,
   getArticle,
-} from './slices';
+} from '~/state/ducks/article/slices';
+import { RootState } from '~/state/store';
 
 const initialState: ArticleState = {
   status: 'idle',

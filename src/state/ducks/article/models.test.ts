@@ -1,4 +1,4 @@
-import { denormalizeArticles, normalizeArticles } from './models';
+import { normalizeArticles, denormalizeArticles } from '~/state/ducks/article/models';
 
 describe('normalizr', () => {
   it('normalizeArticles', () => {

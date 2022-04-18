@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback } from 'react';
 import { Box } from '@mui/material';
-import Button from '../components/actions/Button';
+import Button from '~/views/components/actions/Button';
 
 const OverView: React.VFC = () => {
   type Color = 'primary' | 'secondary' | 'error' | 'info' | 'warning' | 'success';

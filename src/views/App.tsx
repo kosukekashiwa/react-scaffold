@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
-import theme from './theme';
-import AppRouter from './natures/AppRouter';
-import { useAppDispatch, useAppSelector } from './hooks';
-import { darkModeOff, darkModeOn, getPaletteMode } from '../state/ducks/ui/slices';
+import { useAppDispatch, useAppSelector } from '~/views/hooks';
+import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices';
+import theme from '~/views/theme';
+import AppRouter from '~/views/natures/AppRouter';
 
 const App: React.VFC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

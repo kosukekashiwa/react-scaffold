@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from './theme';
 import { Provider } from 'react-redux';
-import { store } from '../state/store';
+import theme from '~/views/theme';
+import { store } from '~/state/store';
 
 const AllTheProviders: FC = ({ children }) => {
   return (
