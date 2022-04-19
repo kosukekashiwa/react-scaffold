@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "prettier:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "format": "run-s lint:fix prettier:write",
     "test": "jest",
     "test:watch": "npm test --watch",
     "build": "webpack --config webpack.prod.js",

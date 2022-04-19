@@ -25,6 +25,12 @@ Run unit test in watch mode. Except `:watch` if you want to run it only once.
 $ npm run test:watch
 ```
 
+Run `eslint --fix` and `prettier --write`.
+
+```
+$ npm run format
+```
+
 ## OSS
 
 - Language
