@@ -1,8 +1,10 @@
-import { rest } from 'msw';
 import React from 'react';
-import { render } from '~/views/test-utils';
-import CheckFetchView from '~/views/natures/CheckFetchView';
+
+import { rest } from 'msw';
+
 import { server } from '~/mocks/server';
+import CheckFetchView from '~/views/natures/CheckFetchView';
+import { render } from '~/views/test-utils';
 
 describe('CheckFetchView tests', () => {
   // お試しtest

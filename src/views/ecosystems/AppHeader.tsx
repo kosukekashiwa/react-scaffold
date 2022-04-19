@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
-import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useAppDispatch, useAppSelector } from '~/views/hooks';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
+
 import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices';
 import { isDarkMode, getLabelColor } from '~/utils';
+import { useAppDispatch, useAppSelector } from '~/views/hooks';
 import tokens from '~/views/tokens';
 
 export const APP_HEADER_HEIGHT = 64;

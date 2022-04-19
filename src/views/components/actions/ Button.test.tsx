@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '~/views/test-utils';
+
 import Button from '~/views/components/actions/Button';
+import { render, fireEvent } from '~/views/test-utils';
 
 describe('Button tests', () => {
   describe('initisal rendering tests', () => {

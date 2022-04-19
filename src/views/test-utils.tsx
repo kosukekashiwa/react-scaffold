@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
-import theme from '~/views/theme';
+
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { render, RenderOptions } from '@testing-library/react';
+
 import { store } from '~/state/store';
+import theme from '~/views/theme';
 
 type AllTheProvidersProps = {
   children: React.ReactNode;

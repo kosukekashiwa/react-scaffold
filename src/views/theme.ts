@@ -1,5 +1,6 @@
-import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+
 import { getLabelColor, isDarkMode } from '~/utils';
 import tokens from '~/views/tokens';
 

@@ -1,4 +1,5 @@
 import { denormalize, normalize, schema } from 'normalizr';
+
 import {
   User,
   userNormalizrSchema,

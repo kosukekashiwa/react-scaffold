@@ -1,6 +1,7 @@
 import { rest } from 'msw';
-import users from './apis/users';
+
 import articles from './apis/articles';
+import users from './apis/users';
 
 export const handlers = [
   rest.get(`/api/v1/users`, users.get),

@@ -17,6 +17,52 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  plugins: ['react', '@typescript-eslint', 'unused-imports', 'import'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['parent', 'sibling'],
+          'object',
+          'type',
+          'index',
+        ],
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          {
+            pattern: 'react**',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '{@/app/**,@/features/**,@/libs/**}',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '{@/components/**,@/pages/**}',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: './**.module.css',
+            group: 'index',
+            position: 'after',
+          },
+        ],
+      },
+    ],
+  },
 };

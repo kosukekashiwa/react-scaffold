@@ -1,6 +1,8 @@
-import { Box, Button } from '@mui/material';
 import React, { useCallback } from 'react';
-import { useAppSelector, useFetch, useAppDispatch } from '~/views/hooks';
+
+import { Box, Button } from '@mui/material';
+
+import { getArticle, fetchArticle } from '~/state/ducks/article/slices';
 import {
   getUserDataStatus,
   getUsers,
@@ -8,7 +10,7 @@ import {
   fetchUsers,
 } from '~/state/ducks/user/slices';
 import { RootState } from '~/state/store';
-import { getArticle, fetchArticle } from '~/state/ducks/article/slices';
+import { useAppSelector, useFetch, useAppDispatch } from '~/views/hooks';
 
 const CheckFetchView: React.FC = () => {
   // user stateのstatusを取得

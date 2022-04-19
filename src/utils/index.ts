@@ -1,4 +1,5 @@
 import { PaletteMode } from '@mui/material';
+
 import tokens from '~/views/tokens';
 
 export const isDarkMode = (mode: PaletteMode): boolean => {

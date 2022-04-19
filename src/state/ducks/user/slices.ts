@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import {
   User,
   NormalizedUsers,
@@ -6,10 +7,11 @@ import {
   normalizeUsers,
   denormalizeUsers,
 } from './models';
-import { FetchStatus } from '~/views/hooks';
+
 import { client } from '~/state/ducks/apiClient';
 import { fetchArticles, fetchArticle } from '~/state/ducks/article/slices';
 import { RootState } from '~/state/store';
+import { FetchStatus } from '~/views/hooks';
 
 export type UserState = {
   // loading, error状態は実装しない

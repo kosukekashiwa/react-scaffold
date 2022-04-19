@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { FetchStatus } from '~/views/hooks';
+
+import { client } from '~/state/ducks/apiClient';
 import {
   Article,
   NormalizedArticles,
@@ -7,10 +8,10 @@ import {
   articleNormalizrSchemaKey,
   denormalizeArticles,
 } from '~/state/ducks/article/models';
-import { UserState } from '~/state/ducks/user/slices';
-import { client } from '~/state/ducks/apiClient';
 import { userNormalizrSchemaKey } from '~/state/ducks/user/models';
+import { UserState } from '~/state/ducks/user/slices';
 import { RootState } from '~/state/store';
+import { FetchStatus } from '~/views/hooks';
 
 export type ArticleState = {
   status: FetchStatus;

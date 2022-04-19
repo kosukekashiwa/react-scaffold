@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Drawer } from '@mui/material';
+
 import theme from '~/views/theme';
 
 const MODAL_NAVIGATION_MARGIN = 1;
