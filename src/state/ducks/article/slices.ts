@@ -50,7 +50,10 @@ export const fetchArticles = createAsyncThunk<
       user: { entities: {} },
     };
   } catch (e) {
-    return thunkAPI.rejectWithValue({ errorMessage: e.toString() });
+    if (e instanceof Error) {
+      return thunkAPI.rejectWithValue({ errorMessage: e.toString() });
+    }
+    return thunkAPI.rejectWithValue({ errorMessage: 'hoge' });
   }
 });
 export const fetchArticle = createAsyncThunk('article/getEntity', async (id: number) => {
