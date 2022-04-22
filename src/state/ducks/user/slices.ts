@@ -24,7 +24,7 @@ const initialState: UserState = {
   data: { ids: [], entities: {} },
 };
 
-/** User API path. */
+/** Users API path. */
 const API_USERS = '/api/v1/users';
 /** Users GET request. */
 export const fetchUsers = createAsyncThunk('user/getEntities', async () => {
