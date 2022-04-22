@@ -17,11 +17,13 @@ import { FetchStatus } from '~/views/hooks';
 export type ArticleState = {
   status: FetchStatus;
   data: { ids: Article['id'][]; entities: NormalizedArticles };
+  deleting: boolean;
 };
 
 const initialState: ArticleState = {
   status: 'idle',
   data: { ids: [], entities: {} },
+  deleting: false,
 };
 
 /** Articles API path. */
@@ -84,9 +86,6 @@ export const articleSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchArticles.rejected, (state) => {
-      state.status = 'failed';
-    });
     builder.addCase(fetchArticles.pending, (state) => {
       state.status = 'loading';
     });
@@ -95,6 +94,12 @@ export const articleSlice = createSlice({
       state.data.ids = action.payload.article.ids;
       state.data.entities = action.payload.article.entities;
     });
+    builder.addCase(fetchArticles.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(fetchArticle.pending, (state) => {
+      state.status = 'loading';
+    });
     builder.addCase(fetchArticle.fulfilled, (state, action) => {
       state.status = 'success';
       if (!state.data.entities[action.payload.article.entity.id]) {
@@ -102,8 +107,18 @@ export const articleSlice = createSlice({
       }
       state.data.entities[action.payload.article.entity.id] = action.payload.article.entity;
     });
+    builder.addCase(fetchArticle.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(deleteArticle.pending, (state) => {
+      state.deleting = true;
+    });
     builder.addCase(deleteArticle.fulfilled, (state) => {
+      state.deleting = false;
       state.status = 'idle';
+    });
+    builder.addCase(deleteArticle.rejected, (state) => {
+      state.deleting = false;
     });
   },
 });
@@ -131,6 +146,8 @@ export const getArticle = ({ article, user }: RootState, id: number) =>
       [userNormalizrSchemaKey]: user.data.entities,
     },
   }).pop();
+/** Returns whether Article deleting. */
+export const isArticleDeleting = ({ article }: RootState) => article.deleting;
 
 /** Article reducer */
 export default articleSlice.reducer;
