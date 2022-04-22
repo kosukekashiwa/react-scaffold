@@ -13,6 +13,7 @@ import { UserState } from '~/state/ducks/user/slices';
 import { RootState } from '~/state/store';
 import { FetchStatus } from '~/views/hooks';
 
+/** The type of Article state. */
 export type ArticleState = {
   status: FetchStatus;
   data: { ids: Article['id'][]; entities: NormalizedArticles };
@@ -23,8 +24,9 @@ const initialState: ArticleState = {
   data: { ids: [], entities: {} },
 };
 
-// apis
+/** Articles API path. */
 const API_ARTICLES = '/api/v1/articles';
+/** Articles GET request. */
 export const fetchArticles = createAsyncThunk<
   {
     article: ArticleState['data'];
@@ -56,9 +58,9 @@ export const fetchArticles = createAsyncThunk<
     return thunkAPI.rejectWithValue({ errorMessage: 'hoge' });
   }
 });
+/** Articles GET request with an ID. */
 export const fetchArticle = createAsyncThunk('article/getEntity', async (id: number) => {
   const response = await client.get<Article>(`${API_ARTICLES}/${id}`);
-  // Articleは単体取得でもUser情報があるため正規化する必要がある
   const normalized = normalizeArticles([response.data]);
   return {
     // eslint-disable-next-line
@@ -67,12 +69,12 @@ export const fetchArticle = createAsyncThunk('article/getEntity', async (id: num
     user: { entity: Object.values(normalized.entities[userNormalizrSchemaKey]).pop()! },
   };
 });
-// post, putはUserとの不整合考えないといけないので、一旦なし
-// export const deleteArticle = createAsyncThunk('article/deleteEntity', async (id: number) => {
-//   await client.delete(`/articles/${id}`);
-// });
+/** Articles DELETE request. */
+export const deleteArticle = createAsyncThunk('article/deleteEntity', async (id: number) => {
+  await client.delete(`/articles/${id}`);
+});
 
-// slice(action & reducer)
+/** The slice for the Article state. */
 export const articleSlice = createSlice({
   name: 'article',
   initialState,
@@ -100,17 +102,18 @@ export const articleSlice = createSlice({
       }
       state.data.entities[action.payload.article.entity.id] = action.payload.article.entity;
     });
-    // builder.addCase(deleteArticle.fulfilled, (state) => {
-    //   state.status = 'idle';
-    // });
+    builder.addCase(deleteArticle.fulfilled, (state) => {
+      state.status = 'idle';
+    });
   },
 });
 
-// action
+/** Article slice actions */
 export const { articleStateIdling } = articleSlice.actions;
 
-// selectors
+/** Returns Article state in the store. */
 export const getArticleDataStatus = ({ article }: RootState) => article.status;
+/** Returns all Article date in the store. */
 export const getArticles = ({ article, user }: RootState) =>
   denormalizeArticles({
     result: article.data.ids,
@@ -119,8 +122,8 @@ export const getArticles = ({ article, user }: RootState) =>
       [userNormalizrSchemaKey]: user.data.entities,
     },
   });
+/** Returns a Article having the the given ID. */
 export const getArticle = ({ article, user }: RootState, id: number) =>
-  // User情報が必要なのでMapから直接取得できない->denormalize
   denormalizeArticles({
     result: [id],
     entities: {
@@ -129,4 +132,5 @@ export const getArticle = ({ article, user }: RootState, id: number) =>
     },
   }).pop();
 
+/** Article reducer */
 export default articleSlice.reducer;
