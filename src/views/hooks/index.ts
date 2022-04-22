@@ -18,11 +18,9 @@ export const useFetch = (
 ): void => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    // 初回表示時にidle状態にするactionをdispatch
     dispatch(stateIdlingAction);
   }, []);
   useEffect(() => {
-    // idle状態ならfetch
     if (dataStatus === 'idle') {
       dispatch(fetchAction);
     }

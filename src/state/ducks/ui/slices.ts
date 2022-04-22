@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { RootState } from '~/state/store';
 
+/** The type of UI state. */
 export type UIState = {
   paletteMode: PaletteMode;
 };
@@ -11,7 +12,7 @@ const initialState: UIState = {
   paletteMode: 'light',
 };
 
-// slices
+/** The slice for the UI state. */
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
@@ -25,10 +26,11 @@ export const uiSlice = createSlice({
   },
 });
 
-// actions
+/** UI slice actions */
 export const { darkModeOn, darkModeOff } = uiSlice.actions;
 
-// selectors
+/** Returns palette mode in the store. */
 export const getPaletteMode = ({ ui }: RootState) => ui.paletteMode;
 
+/** UI reducer */
 export default uiSlice.reducer;
