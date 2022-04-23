@@ -18,7 +18,7 @@ const CheckFetchView: React.FC = () => {
   // storeのuser情報を取得
   const users = useAppSelector(getUsers);
   // useFetchで初回取得 & userDataStatusが変わる度に取得
-  useFetch(userDataStatus, userStateIdling, fetchUsers());
+  useFetch(userDataStatus, userStateIdling(), fetchUsers());
 
   //  srticle単一fetch
   const article = useAppSelector((state: RootState) => getArticle(state, 0));

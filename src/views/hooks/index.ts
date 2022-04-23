@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import { ActionCreatorWithoutPayload, ThunkAction } from '@reduxjs/toolkit';
+import { ThunkAction } from '@reduxjs/toolkit';
 
 import { AppDispatch, RootState } from '~/state/store';
 
@@ -9,10 +9,13 @@ import { AppDispatch, RootState } from '~/state/store';
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
+/** The type of fetch status. */
 export type FetchStatus = 'idle' | 'loading' | 'success' | 'failed';
+
+/** Fetch data when the fetch status is 'idle'. */
 export const useFetch = (
   dataStatus: FetchStatus,
-  stateIdlingAction: ActionCreatorWithoutPayload<string>,
+  stateIdlingAction: { payload: undefined; type: string },
   // eslint-disable-next-line
   fetchAction: ThunkAction<any, any, any, any>,
 ): void => {
