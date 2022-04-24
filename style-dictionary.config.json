@@ -2,7 +2,7 @@
   "source": ["output.json"],
   "platforms": {
     "ts": {
-      "buildPath": "src/views/",
+      "buildPath": "src/views/styles/",
       "transformGroup": "js",
       "files": [
         {

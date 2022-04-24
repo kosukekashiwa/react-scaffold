@@ -9,7 +9,7 @@ import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
 import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices';
 import { isDarkMode, getLabelColor } from '~/utils';
 import { useAppDispatch, useAppSelector } from '~/views/hooks';
-import tokens from '~/views/tokens';
+import tokens from '~/views/styles/tokens';
 
 export const APP_HEADER_HEIGHT = 64;
 

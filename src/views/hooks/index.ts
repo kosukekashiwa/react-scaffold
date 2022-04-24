@@ -15,7 +15,8 @@ export type FetchStatus = 'idle' | 'loading' | 'success' | 'failed';
 /** Fetch data when the fetch status is 'idle'. */
 export const useFetch = (
   dataStatus: FetchStatus,
-  stateIdlingAction: { payload: undefined; type: string },
+  // eslint-disable-next-line
+  stateIdlingAction: { payload: any; type: string },
   // eslint-disable-next-line
   fetchAction: ThunkAction<any, any, any, any>,
 ): void => {

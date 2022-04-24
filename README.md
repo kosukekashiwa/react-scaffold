@@ -62,7 +62,7 @@ $ npm run format
 
 ### Comparison with atomid design
 
-- atoms -> stytle (MUI theme file, Design token file)
+- atoms -> stytles (MUI theme file, Design token file)
 - molecules, organisms -> components
 - templates -> ecosystems
 - pages -> natures

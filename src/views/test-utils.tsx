@@ -5,7 +5,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { render, RenderOptions } from '@testing-library/react';
 
 import { store } from '~/state/store';
-import theme from '~/views/theme';
+import theme from '~/views/styles/theme';
 
 type AllTheProvidersProps = {
   children: React.ReactNode;

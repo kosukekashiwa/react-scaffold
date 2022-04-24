@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 09 Apr 2022 01:46:58 GMT
+ * Generated on Sun, 24 Apr 2022 08:00:34 GMT
  */
 
 export default tokens;
@@ -211,5 +211,24 @@ declare const tokens: {
         "reversed": DesignToken
       }
     }
+  },
+  "space": {
+    "space-0": DesignToken,
+    "space-1px": DesignToken,
+    "space-0_25": DesignToken,
+    "space-0_5": DesignToken,
+    "space-0_75": DesignToken,
+    "space-1": DesignToken,
+    "space-1_5": DesignToken,
+    "space-2": DesignToken,
+    "space-2_5": DesignToken,
+    "space-3": DesignToken,
+    "space-4": DesignToken,
+    "space-5": DesignToken,
+    "space-6": DesignToken,
+    "space-7": DesignToken,
+    "space-8": DesignToken,
+    "space-9": DesignToken,
+    "space-10": DesignToken
   }
 }

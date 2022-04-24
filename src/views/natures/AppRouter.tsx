@@ -12,7 +12,7 @@ import NestedNaviMenuButton, {
 import AppHeader, { APP_HEADER_HEIGHT } from '~/views/ecosystems/AppHeader';
 import CheckFetchView from '~/views/natures/CheckFetchView';
 import OverView from '~/views/natures/OverView';
-import { FLEXIBLE_MAX_WIDTH } from '~/views/theme';
+import { FLEXIBLE_MAX_WIDTH } from '~/views/styles/theme';
 
 const AppRouter: React.FC = () => {
   return (

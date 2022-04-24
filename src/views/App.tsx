@@ -5,7 +5,7 @@ import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { darkModeOn, darkModeOff, getPaletteMode } from '~/state/ducks/ui/slices';
 import { useAppDispatch, useAppSelector } from '~/views/hooks';
 import AppRouter from '~/views/natures/AppRouter';
-import theme from '~/views/theme';
+import theme from '~/views/styles/theme';
 
 const App: React.FC = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

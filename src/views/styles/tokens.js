@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 09 Apr 2022 01:46:58 GMT
+ * Generated on Sun, 24 Apr 2022 08:00:34 GMT
  */
 
 module.exports = {
@@ -3331,7 +3331,7 @@ module.exports = {
         "filePath": "output.json",
         "isSource": true,
         "original": {
-          "value": "#1C2B36",
+          "value": "#1c2b36cc",
           "type": "color"
         },
         "name": "ColorSurfaceOverlay",
@@ -3440,6 +3440,331 @@ module.exports = {
           ]
         }
       }
+    }
+  },
+  "space": {
+    "space-0": {
+      "value": 0,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 0,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace0",
+      "attributes": {
+        "category": "space",
+        "type": "space-0"
+      },
+      "path": [
+        "space",
+        "space-0"
+      ]
+    },
+    "space-1px": {
+      "value": 1,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 1,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace1px",
+      "attributes": {
+        "category": "space",
+        "type": "space-1px"
+      },
+      "path": [
+        "space",
+        "space-1px"
+      ]
+    },
+    "space-0_25": {
+      "value": 2,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 2,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace025",
+      "attributes": {
+        "category": "space",
+        "type": "space-0_25"
+      },
+      "path": [
+        "space",
+        "space-0_25"
+      ]
+    },
+    "space-0_5": {
+      "value": 4,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 4,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace05",
+      "attributes": {
+        "category": "space",
+        "type": "space-0_5"
+      },
+      "path": [
+        "space",
+        "space-0_5"
+      ]
+    },
+    "space-0_75": {
+      "value": 8,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 8,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace075",
+      "attributes": {
+        "category": "space",
+        "type": "space-0_75"
+      },
+      "path": [
+        "space",
+        "space-0_75"
+      ]
+    },
+    "space-1": {
+      "value": 12,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 12,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace1",
+      "attributes": {
+        "category": "space",
+        "type": "space-1"
+      },
+      "path": [
+        "space",
+        "space-1"
+      ]
+    },
+    "space-1_5": {
+      "value": 16,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 16,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace15",
+      "attributes": {
+        "category": "space",
+        "type": "space-1_5"
+      },
+      "path": [
+        "space",
+        "space-1_5"
+      ]
+    },
+    "space-2": {
+      "value": 20,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 20,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace2",
+      "attributes": {
+        "category": "space",
+        "type": "space-2"
+      },
+      "path": [
+        "space",
+        "space-2"
+      ]
+    },
+    "space-2_5": {
+      "value": 24,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 24,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace25",
+      "attributes": {
+        "category": "space",
+        "type": "space-2_5"
+      },
+      "path": [
+        "space",
+        "space-2_5"
+      ]
+    },
+    "space-3": {
+      "value": 28,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 28,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace3",
+      "attributes": {
+        "category": "space",
+        "type": "space-3"
+      },
+      "path": [
+        "space",
+        "space-3"
+      ]
+    },
+    "space-4": {
+      "value": 32,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 32,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace4",
+      "attributes": {
+        "category": "space",
+        "type": "space-4"
+      },
+      "path": [
+        "space",
+        "space-4"
+      ]
+    },
+    "space-5": {
+      "value": 40,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 40,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace5",
+      "attributes": {
+        "category": "space",
+        "type": "space-5"
+      },
+      "path": [
+        "space",
+        "space-5"
+      ]
+    },
+    "space-6": {
+      "value": 48,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 48,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace6",
+      "attributes": {
+        "category": "space",
+        "type": "space-6"
+      },
+      "path": [
+        "space",
+        "space-6"
+      ]
+    },
+    "space-7": {
+      "value": 56,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 56,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace7",
+      "attributes": {
+        "category": "space",
+        "type": "space-7"
+      },
+      "path": [
+        "space",
+        "space-7"
+      ]
+    },
+    "space-8": {
+      "value": 64,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 64,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace8",
+      "attributes": {
+        "category": "space",
+        "type": "space-8"
+      },
+      "path": [
+        "space",
+        "space-8"
+      ]
+    },
+    "space-9": {
+      "value": 72,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 72,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace9",
+      "attributes": {
+        "category": "space",
+        "type": "space-9"
+      },
+      "path": [
+        "space",
+        "space-9"
+      ]
+    },
+    "space-10": {
+      "value": 80,
+      "type": "spacing",
+      "filePath": "output.json",
+      "isSource": true,
+      "original": {
+        "value": 80,
+        "type": "spacing"
+      },
+      "name": "SpaceSpace10",
+      "attributes": {
+        "category": "space",
+        "type": "space-10"
+      },
+      "path": [
+        "space",
+        "space-10"
+      ]
     }
   }
 };

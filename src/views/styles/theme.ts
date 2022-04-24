@@ -2,7 +2,7 @@ import { PaletteMode } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 
 import { getLabelColor, isDarkMode } from '~/utils';
-import tokens from '~/views/tokens';
+import tokens from '~/views/styles/tokens';
 
 export const FLEXIBLE_MAX_WIDTH = 1280;
 
@@ -65,13 +65,15 @@ const theme = (paletteMode?: PaletteMode) => {
           },
         },
       },
-      // MuiBackdrop: {
-      //   styleOverrides: {
-      //     root: {
-      //       backgroundColor: tokens.color.surface.overlay.value,
-      //     },
-      //   },
-      // },
+      MuiBackdrop: {
+        styleOverrides: {
+          root: {
+            // backgroundColor: tokens.color.surface.overlay.value,
+            // npm scripts tokne:genJson でRGBA変換が上手くいかないため直書き
+            backgroundColor: 'rgba(28, 43, 54, 0.8)',
+          },
+        },
+      },
       MuiTypography: {
         styleOverrides: {
           root: {
