@@ -154,13 +154,13 @@ describe('article slice teets', () => {
         data: {
           ids: [1, 2],
           entities: {
-            1: { id: 1, title: 'title-1', author: 1 },
-            2: { id: 2, title: 'title-2', author: 1 },
+            1: { id: 1, title: 'title-1', author: '1' },
+            2: { id: 2, title: 'title-2', author: '1' },
           },
         },
         deleting: false,
       },
-      user: { status: 'idle', data: { ids: [1], entities: { 1: { id: 1, name: 'name-1' } } } },
+      user: { status: 'idle', data: { ids: ['1'], entities: { 1: { id: '1', name: 'name-1' } } } },
     };
 
     it('getArticleDataStatus', () => {
@@ -173,8 +173,8 @@ describe('article slice teets', () => {
       const articles = getArticles(testState);
 
       expect(articles).toEqual([
-        { id: 1, title: 'title-1', author: { id: 1, name: 'name-1' } },
-        { id: 2, title: 'title-2', author: { id: 1, name: 'name-1' } },
+        { id: 1, title: 'title-1', author: { id: '1', name: 'name-1' } },
+        { id: 2, title: 'title-2', author: { id: '1', name: 'name-1' } },
       ]);
     });
 
@@ -184,7 +184,7 @@ describe('article slice teets', () => {
       expect(article).toEqual({
         id: 1,
         title: 'title-1',
-        author: { id: 1, name: 'name-1' },
+        author: { id: '1', name: 'name-1' },
       });
     });
 

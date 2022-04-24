@@ -7,16 +7,16 @@ export const userHandlers = [
     return res(
       ctx.status(200),
       ctx.json([
-        { id: 0, name: 'name-0' },
-        { id: 1, name: 'name-1' },
-        { id: 2, name: 'name-2' },
+        { id: '0', name: 'name-0' },
+        { id: '1', name: 'name-1' },
+        { id: '2', name: 'name-2' },
       ]),
     );
   }),
   rest.get<DefaultRequestBody, PathParams, User>(`/api/v1/users/:userId`, (req, res, ctx) => {
     const { userId } = req.params;
 
-    return res(ctx.status(200), ctx.json({ id: 0, name: `name-${userId}` }));
+    return res(ctx.status(200), ctx.json({ id: '0', name: `name-${userId}` }));
   }),
   rest.post<DefaultRequestBody, PathParams, DefaultRequestBody>(
     `/api/v1/users/:userId`,

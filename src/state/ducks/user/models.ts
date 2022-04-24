@@ -2,7 +2,7 @@ import { denormalize, normalize, schema } from 'normalizr';
 
 /** The type of User. */
 export type User = {
-  id: number;
+  id: string;
   name: string;
 };
 
@@ -21,7 +21,7 @@ export const userNormalizrSchema = new schema.Entity<User>(
 
 /** The type of normalized Users. */
 export type NormalizedUsers = {
-  [id: number]: NormalizedUser;
+  [id: string]: NormalizedUser;
 };
 
 /** Normalized Users. */

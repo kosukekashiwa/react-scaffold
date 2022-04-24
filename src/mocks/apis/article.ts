@@ -7,9 +7,9 @@ export const articleHandlers = [
     return res(
       ctx.status(200),
       ctx.json([
-        { id: 0, title: 'title-0', author: { id: 0, name: 'name-0' } },
-        { id: 1, title: 'title-1', author: { id: 1, name: 'name-1' } },
-        { id: 2, title: 'title-2', author: { id: 1, name: 'name-1' } },
+        { id: 0, title: 'title-0', author: { id: '0', name: 'name-0' } },
+        { id: 1, title: 'title-1', author: { id: '1', name: 'name-1' } },
+        { id: 2, title: 'title-2', author: { id: '1', name: 'name-1' } },
       ]),
     );
   }),
@@ -20,7 +20,7 @@ export const articleHandlers = [
 
       return res(
         ctx.status(200),
-        ctx.json({ id: 0, title: `title-${articleId}`, author: { id: 0, name: 'name-0' } }),
+        ctx.json({ id: 0, title: `title-${articleId}`, author: { id: '0', name: 'name-0' } }),
       );
     },
   ),
