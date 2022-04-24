@@ -3,7 +3,7 @@ import { rest, DefaultRequestBody, PathParams } from 'msw';
 import { User } from '~/state/ducks/user/models';
 
 const userApis = [
-  rest.get<DefaultRequestBody, PathParams, User[]>(`/api/v1/articles`, (req, res, ctx) => {
+  rest.get<DefaultRequestBody, PathParams, User[]>(`/api/v1/users`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([
