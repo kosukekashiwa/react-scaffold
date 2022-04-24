@@ -37,10 +37,10 @@ $ npm run format
   - Typescript: "^4.6.2"
   - JSX
 - Framework
-  - React: "^17.0.2"
+  - React: "^18.0.0"
 - State manegement
   - Redux Toolkit: "^1.8.0"
-  - react-redux: "^7.2.6"
+  - react-redux: "^8.0.0"
 - Routing
   - react-router-dom: "^6.2.2"
 - Design system
@@ -56,6 +56,7 @@ $ npm run format
 - Test
   - React Testing Library: "^12.1.4"
   - Jest: "^27.5.1"
+- Mock server
   - MSW: "^0.39.2",
 
 ## Views directory
