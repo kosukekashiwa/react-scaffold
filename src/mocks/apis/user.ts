@@ -21,7 +21,7 @@ const userApis = [
   rest.post<DefaultRequestBody, PathParams, DefaultRequestBody>(
     `/api/v1/users/:userId`,
     (req, res, ctx) => {
-      return res(ctx.status(200));
+      return res(ctx.status(201));
     },
   ),
   rest.put<DefaultRequestBody, PathParams, DefaultRequestBody>(`/api/v1/users`, (req, res, ctx) => {
