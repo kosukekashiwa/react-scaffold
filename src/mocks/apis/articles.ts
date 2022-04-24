@@ -1,14 +1,29 @@
-import { ResponseResolver, MockedRequest, restContext } from 'msw';
+import { PathParams, DefaultRequestBody, rest } from 'msw';
 
-const get: ResponseResolver<MockedRequest, typeof restContext> = (req, res, ctx) => {
-  return res(
-    ctx.status(200),
-    ctx.json([
-      { id: 0, title: 'title-0', author: { id: 0, name: 'name-0' } },
-      { id: 1, title: 'title-1', author: { id: 1, name: 'name-1' } },
-      { id: 2, title: 'title-2', author: { id: 1, name: 'name-1' } },
-    ]),
-  );
-};
+import { Article } from '~/state/ducks/article/models';
 
-export default { get };
+const articleApis = [
+  rest.get<DefaultRequestBody, PathParams, Article[]>(`/api/v1/articles`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        { id: 0, title: 'title-0', author: { id: 0, name: 'name-0' } },
+        { id: 1, title: 'title-1', author: { id: 1, name: 'name-1' } },
+        { id: 2, title: 'title-2', author: { id: 1, name: 'name-1' } },
+      ]),
+    );
+  }),
+  rest.get<DefaultRequestBody, PathParams, Article>(
+    `/api/v1/articles/:articleId`,
+    (req, res, ctx) => {
+      const { articleId } = req.params;
+
+      return res(
+        ctx.status(200),
+        ctx.json({ id: 0, title: `title-${articleId}`, author: { id: 0, name: 'name-0' } }),
+      );
+    },
+  ),
+];
+
+export default articleApis;
