@@ -23,11 +23,11 @@ describe('CheckFetchView tests', () => {
           return res.once(
             ctx.status(200),
             ctx.json([
-              { id: 0, name: 'name-0' },
-              { id: 1, name: 'name-1' },
-              { id: 2, name: 'name-2' },
-              { id: 3, name: 'name-3' },
-              { id: 4, name: 'name-4' },
+              { id: '0', name: 'name-0' },
+              { id: '1', name: 'name-1' },
+              { id: '2', name: 'name-2' },
+              { id: '3', name: 'name-3' },
+              { id: '4', name: 'name-4' },
             ]),
           );
         }),

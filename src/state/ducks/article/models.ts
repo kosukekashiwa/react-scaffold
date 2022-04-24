@@ -9,7 +9,7 @@ import {
 
 /** The type of Article. */
 export type Article = {
-  id: number;
+  id: string;
   title: string;
   author: User;
 };
@@ -31,7 +31,7 @@ export const articleNormalizrSchema = new schema.Entity<Article>(
 
 /** The type of normalized Articles. */
 export type NormalizedArticles = {
-  [id: number]: NormalizedArticle;
+  [id: string]: NormalizedArticle;
 };
 
 /** Normalized Articles. */

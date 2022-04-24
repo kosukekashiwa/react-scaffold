@@ -37,11 +37,11 @@ describe('article slice teets', () => {
           type: fetchArticles.fulfilled.type,
           payload: {
             article: {
-              ids: [1, 2, 3],
+              ids: ['1', '2', '3'],
               entities: {
-                1: { id: 1, title: 'title-1', author: 1 },
-                2: { id: 2, title: 'title-2', author: 1 },
-                3: { id: 3, title: 'title-3', author: 2 },
+                '1': { id: '1', title: 'title-1', author: '1' },
+                '2': { id: '2', title: 'title-2', author: '1' },
+                '3': { id: '3', title: 'title-3', author: '2' },
               },
             },
             user: { entities: {} },
@@ -51,11 +51,11 @@ describe('article slice teets', () => {
         const state = articleSlice.reducer(initialState, action);
 
         expect(state.data).toEqual({
-          ids: [1, 2, 3],
+          ids: ['1', '2', '3'],
           entities: {
-            1: { id: 1, title: 'title-1', author: 1 },
-            2: { id: 2, title: 'title-2', author: 1 },
-            3: { id: 3, title: 'title-3', author: 2 },
+            '1': { id: '1', title: 'title-1', author: '1' },
+            '2': { id: '2', title: 'title-2', author: '1' },
+            '3': { id: '3', title: 'title-3', author: '2' },
           },
         });
         expect(state.status).toEqual('success');
@@ -87,7 +87,7 @@ describe('article slice teets', () => {
         const action: AnyAction = {
           type: fetchArticle.fulfilled.type,
           payload: {
-            article: { entity: { id: 1, title: 'title-1', author: 1 } },
+            article: { entity: { id: '1', title: 'title-1', author: '1' } },
             user: { entity: {} },
           },
         };
@@ -95,8 +95,8 @@ describe('article slice teets', () => {
         const state = articleSlice.reducer(initialState, action);
 
         expect(state.data).toEqual({
-          ids: [1],
-          entities: { 1: { id: 1, title: 'title-1', author: 1 } },
+          ids: ['1'],
+          entities: { '1': { id: '1', title: 'title-1', author: '1' } },
         });
         expect(state.status).toEqual('success');
       });
@@ -152,15 +152,18 @@ describe('article slice teets', () => {
       article: {
         status: 'success',
         data: {
-          ids: [1, 2],
+          ids: ['1', '2'],
           entities: {
-            1: { id: 1, title: 'title-1', author: '1' },
-            2: { id: 2, title: 'title-2', author: '1' },
+            '1': { id: '1', title: 'title-1', author: '1' },
+            '2': { id: '2', title: 'title-2', author: '1' },
           },
         },
         deleting: false,
       },
-      user: { status: 'idle', data: { ids: ['1'], entities: { 1: { id: '1', name: 'name-1' } } } },
+      user: {
+        status: 'idle',
+        data: { ids: ['1'], entities: { '1': { id: '1', name: 'name-1' } } },
+      },
     };
 
     it('getArticleDataStatus', () => {
@@ -173,16 +176,16 @@ describe('article slice teets', () => {
       const articles = getArticles(testState);
 
       expect(articles).toEqual([
-        { id: 1, title: 'title-1', author: { id: '1', name: 'name-1' } },
-        { id: 2, title: 'title-2', author: { id: '1', name: 'name-1' } },
+        { id: '1', title: 'title-1', author: { id: '1', name: 'name-1' } },
+        { id: '2', title: 'title-2', author: { id: '1', name: 'name-1' } },
       ]);
     });
 
     it('getArticle', () => {
-      const article = getArticle(testState, 1);
+      const article = getArticle(testState, '1');
 
       expect(article).toEqual({
-        id: 1,
+        id: '1',
         title: 'title-1',
         author: { id: '1', name: 'name-1' },
       });

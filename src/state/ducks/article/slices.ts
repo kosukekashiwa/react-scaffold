@@ -138,7 +138,7 @@ export const getArticles = ({ article, user }: RootState) =>
     },
   });
 /** Returns a Article having the the given ID. */
-export const getArticle = ({ article, user }: RootState, id: number) =>
+export const getArticle = ({ article, user }: RootState, id: string) =>
   denormalizeArticles({
     result: [id],
     entities: {

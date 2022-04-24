@@ -21,7 +21,7 @@ const CheckFetchView: React.FC = () => {
   useFetch(userDataStatus, userStateIdling(), fetchUsers());
 
   //  srticle単一fetch
-  const article = useAppSelector((state: RootState) => getArticle(state, 0));
+  const article = useAppSelector((state: RootState) => getArticle(state, '0'));
   const dispatch = useAppDispatch();
   const handleFetchButtonClick = useCallback(() => {
     dispatch(fetchArticle(0));
