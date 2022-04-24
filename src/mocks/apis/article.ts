@@ -2,7 +2,7 @@ import { PathParams, DefaultRequestBody, rest } from 'msw';
 
 import { Article } from '~/state/ducks/article/models';
 
-const articleApis = [
+export const articleHandlers = [
   rest.get<DefaultRequestBody, PathParams, Article[]>(`/api/v1/articles`, (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -27,7 +27,7 @@ const articleApis = [
   rest.post<DefaultRequestBody, PathParams, DefaultRequestBody>(
     `/api/v1/articles/:articleId`,
     (req, res, ctx) => {
-      return res(ctx.status(200));
+      return res(ctx.status(201));
     },
   ),
   rest.put<DefaultRequestBody, PathParams, DefaultRequestBody>(
@@ -43,5 +43,3 @@ const articleApis = [
     },
   ),
 ];
-
-export default articleApis;

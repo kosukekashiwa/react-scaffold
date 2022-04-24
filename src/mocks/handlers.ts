@@ -1,4 +1,4 @@
-import articleApis from '~/mocks/apis/article';
-import userApis from '~/mocks/apis/user';
+import { articleHandlers } from '~/mocks/apis/article';
+import { userHandlers } from '~/mocks/apis/user';
 
-export const handlers = [...userApis, ...articleApis];
+export const handlers = [...userHandlers, ...articleHandlers];
