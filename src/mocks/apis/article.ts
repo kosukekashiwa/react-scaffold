@@ -24,6 +24,24 @@ const articleApis = [
       );
     },
   ),
+  rest.post<DefaultRequestBody, PathParams, DefaultRequestBody>(
+    `/api/v1/articles/:articleId`,
+    (req, res, ctx) => {
+      return res(ctx.status(200));
+    },
+  ),
+  rest.put<DefaultRequestBody, PathParams, DefaultRequestBody>(
+    `/api/v1/articles`,
+    (req, res, ctx) => {
+      return res(ctx.status(200));
+    },
+  ),
+  rest.delete<DefaultRequestBody, PathParams, DefaultRequestBody>(
+    `/api/v1/articles/:articleId`,
+    (req, res, ctx) => {
+      return res(ctx.status(200));
+    },
+  ),
 ];
 
 export default articleApis;
