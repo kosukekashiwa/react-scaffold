@@ -5,7 +5,7 @@ const db = {
 
 for (let i = 0; i < 5; i++) {
   db.users.push({
-    id: i,
+    id: `${i}`,
     name: `userName-${i}`,
   });
 }
@@ -15,7 +15,7 @@ for (let i = 0; i < 5; i++) {
     id: i,
     title: `articleTitle-${i}`,
     author: {
-      id: i,
+      id: `${i}`,
       name: `userNameHoge-${i}`,
     },
   });
