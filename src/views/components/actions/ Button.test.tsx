@@ -27,7 +27,7 @@ describe('Button tests', () => {
           Test
         </Button>,
       );
-      fireEvent.click(result.getByText('Test'));
+      fireEvent.click(result.getByRole('button'));
 
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler).not.toHaveBeenCalledTimes(2);
@@ -41,8 +41,8 @@ describe('Button tests', () => {
           Test
         </Button>,
       );
-      fireEvent.click(result.getByText('Test'));
-      fireEvent.click(result.getByText('Test'));
+      fireEvent.click(result.getByRole('button'));
+      fireEvent.click(result.getByRole('button'));
 
       expect(handler).toHaveBeenCalledTimes(2);
     });

@@ -10,6 +10,7 @@ import NestedNaviMenuButton, {
   NestedNaviMenuButtonProps,
 } from '~/views/components/containers/NestedNaviMenuButton';
 import AppHeader, { APP_HEADER_HEIGHT } from '~/views/ecosystems/AppHeader';
+import ActionsView from '~/views/natures/ActionsView';
 import CheckFetchView from '~/views/natures/CheckFetchView';
 import OverView from '~/views/natures/OverView';
 import { FLEXIBLE_MAX_WIDTH } from '~/views/styles/theme';
@@ -22,9 +23,9 @@ const AppRouter: React.FC = () => {
         <Route path="ui" element={<AppLayout />}>
           <Route index element={<OverView />} />
           <Route path={'check-fetch'} element={<CheckFetchView />} />
-          <Route path={'dashboard'}>
-            <Route index element={<Navigate to={'q4-milestones'} />} />
-            <Route path={'q4-milestones'} element={<Box>Q4 Milestones</Box>} />
+          <Route path={'components'}>
+            <Route index element={<Navigate to={'actions'} />} />
+            <Route path={'actions'} element={<ActionsView />} />
             <Route path={'releases'} element={<Box>Releases</Box>} />
             <Route path={'site-traffic'} element={<Box>Site Traffic</Box>} />
           </Route>
@@ -75,13 +76,13 @@ const AppLayout: React.FC = () => {
     handleNavigation('check-fetch');
   }, [handleNavigation]);
   const handleQ4MilestonesClick = useCallback((): void => {
-    handleNavigation('dashboard/q4-milestones');
+    handleNavigation('components/actions');
   }, [handleNavigation]);
   const handleReleasesClick = useCallback((): void => {
-    handleNavigation('dashboard/releases');
+    handleNavigation('components/releases');
   }, [handleNavigation]);
   const handleSiteTrafficClick = useCallback((): void => {
-    handleNavigation('dashboard/site-traffic');
+    handleNavigation('components/site-traffic');
   }, [handleNavigation]);
   const handleGroupsClick = useCallback((): void => {
     handleNavigation('groups');
@@ -90,15 +91,15 @@ const AppLayout: React.FC = () => {
     handleNavigation('settings');
   }, [handleNavigation]);
 
-  const dashboardMenuItems: NestedNaviMenuButtonProps['items'] = [
-    { label: 'Q4 Milestones', onClick: handleQ4MilestonesClick },
+  const componentsMenuItems: NestedNaviMenuButtonProps['items'] = [
+    { label: 'Actions', onClick: handleQ4MilestonesClick },
     { label: 'Releases', onClick: handleReleasesClick },
     { label: 'Site Traffic', onClick: handleSiteTrafficClick },
   ];
   const menuList: React.ReactNode = (
     <List>
       <NaviMenuButton label="Check Fetch" onClick={handleCheckFetchClick} />
-      <NestedNaviMenuButton label="Dashboard" items={dashboardMenuItems} />
+      <NestedNaviMenuButton label="Components" items={componentsMenuItems} />
       <NaviMenuButton label="Groups" onClick={handleGroupsClick} />
       <NaviMenuButton label="Settings" onClick={handleSettingsClick} />
     </List>
