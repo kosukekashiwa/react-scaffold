@@ -1,5 +1,6 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const srcDir = 'src';
 
@@ -48,6 +49,7 @@ module.exports = {
       extensions: ['.ts', '.js'],
       exclude: ['node_modules', 'tokens,js'],
     }),
+    new Dotenv(),
   ],
   target: 'web',
 };

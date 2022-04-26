@@ -7,8 +7,8 @@ import { worker } from '~/mocks/worker';
 import { store } from '~/state/store';
 import App from '~/views/App';
 
-// memo: json-serverとmswを切り替えれる様にするか迷い中(mswのみにしようかな?)
-if (process.env.NODE_ENV === 'development') {
+/** Activate client-side mocking. */
+if (process.env.NODE_ENV === 'development' && process.env.USE_MSW === 'true') {
   worker.start();
 }
 
