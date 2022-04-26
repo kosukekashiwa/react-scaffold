@@ -26,8 +26,14 @@ const AppRouter: React.FC = () => {
           <Route path={'components'}>
             <Route index element={<Navigate to={'actions'} />} />
             <Route path={'actions'} element={<ActionsView />} />
-            <Route path={'releases'} element={<Box>Releases</Box>} />
-            <Route path={'site-traffic'} element={<Box>Site Traffic</Box>} />
+            <Route path={'containers'} element={<Box>Containers</Box>} />
+            <Route path={'content-display'} element={<Box>Content Display</Box>} />
+            <Route path={'data-display'} element={<Box>Data Display</Box>} />
+            <Route path={'feedback'} element={<Box>Feedback</Box>} />
+            <Route path={'forms-and-inputs'} element={<Box>{'Forms & Inputs'}</Box>} />
+            <Route path={'loading-and-status'} element={<Box>{'Loading & Status'}</Box>} />
+            <Route path={'navigational'} element={<Box>Navigational</Box>} />
+            <Route path={'search-and-filters'} element={<Box>{'Search & Filters'}</Box>} />
           </Route>
           <Route path={'groups'} element={<Box>Groups</Box>} />
           <Route path={'settings'} element={<Box>Settings</Box>} />
@@ -75,14 +81,32 @@ const AppLayout: React.FC = () => {
   const handleCheckFetchClick = useCallback((): void => {
     handleNavigation('check-fetch');
   }, [handleNavigation]);
-  const handleQ4MilestonesClick = useCallback((): void => {
+  const handleActionsClick = useCallback((): void => {
     handleNavigation('components/actions');
   }, [handleNavigation]);
-  const handleReleasesClick = useCallback((): void => {
-    handleNavigation('components/releases');
+  const handleContainersClick = useCallback((): void => {
+    handleNavigation('components/containers');
   }, [handleNavigation]);
-  const handleSiteTrafficClick = useCallback((): void => {
-    handleNavigation('components/site-traffic');
+  const handleContentDisplayClick = useCallback((): void => {
+    handleNavigation('components/content-display');
+  }, [handleNavigation]);
+  const handleDataDisplayClick = useCallback((): void => {
+    handleNavigation('components/data-display');
+  }, [handleNavigation]);
+  const handleFeedbackClick = useCallback((): void => {
+    handleNavigation('components/feedback');
+  }, [handleNavigation]);
+  const handleFormsAndInputsClick = useCallback((): void => {
+    handleNavigation('components/forms-and-inputs');
+  }, [handleNavigation]);
+  const handleLoadingAndStatusClick = useCallback((): void => {
+    handleNavigation('components/loading-and-status');
+  }, [handleNavigation]);
+  const handleNavigationalClick = useCallback((): void => {
+    handleNavigation('components/navigational');
+  }, [handleNavigation]);
+  const handleSearchAndFiltersClick = useCallback((): void => {
+    handleNavigation('components/search-and-filters');
   }, [handleNavigation]);
   const handleGroupsClick = useCallback((): void => {
     handleNavigation('groups');
@@ -92,9 +116,15 @@ const AppLayout: React.FC = () => {
   }, [handleNavigation]);
 
   const componentsMenuItems: NestedNaviMenuButtonProps['items'] = [
-    { label: 'Actions', onClick: handleQ4MilestonesClick },
-    { label: 'Releases', onClick: handleReleasesClick },
-    { label: 'Site Traffic', onClick: handleSiteTrafficClick },
+    { label: 'Actions', onClick: handleActionsClick },
+    { label: 'Containers', onClick: handleContainersClick },
+    { label: 'Content Display', onClick: handleContentDisplayClick },
+    { label: 'Data Display', onClick: handleDataDisplayClick },
+    { label: 'Feedback', onClick: handleFeedbackClick },
+    { label: 'Forms & Inputs', onClick: handleFormsAndInputsClick },
+    { label: 'Loading & Status', onClick: handleLoadingAndStatusClick },
+    { label: 'Navigational', onClick: handleNavigationalClick },
+    { label: 'Search & Filters', onClick: handleSearchAndFiltersClick },
   ];
   const menuList: React.ReactNode = (
     <List>
