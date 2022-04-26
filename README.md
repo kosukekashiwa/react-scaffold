@@ -71,7 +71,7 @@ $ npm run format
 ### Components subdirectory
 
 - Actions
-  - `buttons` `button group` `button select` `collapse` `dropdown` `link`
+  - `buttons` `button group` `button select` ~~`collapse`~~ `dropdown` `link`
 - Containers
   - `button sheet` `flex layout` `horizontal scroll` `image container` `menu` `react grid layout` `side panel` `side panel menu` `toolbar`
 - Content Display
