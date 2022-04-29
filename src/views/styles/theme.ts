@@ -90,6 +90,9 @@ const theme = (paletteMode?: PaletteMode) => {
             fontWeight: 'bold',
             boxShadow: 'none',
           },
+          outlinedSecondary: {
+            color: labelColor,
+          },
         },
       },
     },

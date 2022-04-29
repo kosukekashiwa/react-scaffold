@@ -12,6 +12,45 @@ const ActionsView: React.FC = () => {
   type Color = 'primary' | 'secondary' | 'error' | 'info' | 'warning' | 'success';
   const colors: Color[] = ['primary', 'secondary', 'error', 'info', 'warning', 'success'];
 
+  const contrast = {
+    light: {
+      contained: {
+        primary: 'AA',
+        secondary: 'AAA',
+        error: 'AA',
+        info: '×',
+        warning: 'AAA',
+        success: 'AA',
+      },
+      outlined: {
+        primary: 'AA',
+        secondary: 'AAA',
+        error: 'AA',
+        info: '×',
+        warning: '×',
+        success: 'AA',
+      },
+    },
+    dark: {
+      contained: {
+        primary: 'AAA',
+        secondary: '×',
+        error: 'AAA',
+        info: 'AA',
+        warning: '×',
+        success: 'AAA',
+      },
+      outlined: {
+        primary: 'AAA',
+        secondary: 'AAA',
+        error: 'AAA',
+        info: '×',
+        warning: 'AA',
+        success: 'AAA',
+      },
+    },
+  };
+
   const handleButtonClick = useCallback((): void => {
     // No Action
   }, []);
@@ -32,15 +71,25 @@ const ActionsView: React.FC = () => {
                       <Box key={color}>
                         <Box>{color}</Box>
                         <Stack direction="row" spacing={1}>
-                          <Button onClick={handleButtonClick} variant="contained" color={color}>
-                            Contained
-                          </Button>
-                          <Button onClick={handleButtonClick} variant="outlined" color={color}>
-                            Outlined
-                          </Button>
-                          <Button onClick={handleButtonClick} variant="text" color={color}>
-                            Text
-                          </Button>
+                          <Box>
+                            <Box>
+                              <Button onClick={handleButtonClick} variant="contained" color={color}>
+                                Contained
+                              </Button>
+                            </Box>
+                            <Box>{contrast.light.contained[color]}</Box>
+                          </Box>
+                          <Box>
+                            <Button onClick={handleButtonClick} variant="outlined" color={color}>
+                              Outlined
+                            </Button>
+                            <Box>{contrast.light.outlined[color]}</Box>
+                          </Box>
+                          <Box>
+                            <Button onClick={handleButtonClick} variant="text" color={color}>
+                              Text
+                            </Button>
+                          </Box>
                         </Stack>
                       </Box>
                     ))}
@@ -57,15 +106,27 @@ const ActionsView: React.FC = () => {
                       <Box key={color}>
                         <Box>{color}</Box>
                         <Stack direction="row" spacing={1}>
-                          <Button onClick={handleButtonClick} variant="contained" color={color}>
-                            Contained
-                          </Button>
-                          <Button onClick={handleButtonClick} variant="outlined" color={color}>
-                            Outlined
-                          </Button>
-                          <Button onClick={handleButtonClick} variant="text" color={color}>
-                            Text
-                          </Button>
+                          <Box>
+                            <Box>
+                              <Button onClick={handleButtonClick} variant="contained" color={color}>
+                                Contained
+                              </Button>
+                              <Box>{contrast.dark.contained[color]}</Box>
+                            </Box>
+                          </Box>
+                          <Box>
+                            <Box>
+                              <Button onClick={handleButtonClick} variant="outlined" color={color}>
+                                Outlined
+                              </Button>
+                              <Box>{contrast.dark.outlined[color]}</Box>
+                            </Box>
+                          </Box>
+                          <Box>
+                            <Button onClick={handleButtonClick} variant="text" color={color}>
+                              Text
+                            </Button>
+                          </Box>
                         </Stack>
                       </Box>
                     ))}
