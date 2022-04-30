@@ -71,6 +71,7 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // fetchUsers
     builder.addCase(fetchUsers.pending, (state) => {
       state.status = 'loading';
     });
@@ -82,6 +83,7 @@ export const userSlice = createSlice({
     builder.addCase(fetchUsers.rejected, (state) => {
       state.status = 'failed';
     });
+    // fetchUser
     builder.addCase(fetchUser.pending, (state) => {
       state.status = 'loading';
     });
@@ -95,6 +97,7 @@ export const userSlice = createSlice({
     builder.addCase(fetchUser.rejected, (state) => {
       state.status = 'failed';
     });
+    // postUser
     builder.addCase(postUser.pending, (state) => {
       state.posting = true;
     });
@@ -105,6 +108,7 @@ export const userSlice = createSlice({
     builder.addCase(postUser.rejected, (state) => {
       state.posting = false;
     });
+    // putUser
     builder.addCase(putUser.pending, (state) => {
       state.putting = true;
     });
@@ -115,6 +119,7 @@ export const userSlice = createSlice({
     builder.addCase(putUser.rejected, (state) => {
       state.putting = false;
     });
+    // deleteUser
     builder.addCase(deleteUser.pending, (state) => {
       state.deleting = true;
     });
@@ -126,6 +131,7 @@ export const userSlice = createSlice({
       state.deleting = false;
     });
     // chenge state by article
+    // fetchArticles
     builder.addCase(fetchArticles.fulfilled, (state, action) => {
       state.status = 'success';
       Object.values(action.payload.user.entities).forEach((user) => {
@@ -135,6 +141,7 @@ export const userSlice = createSlice({
         state.data.entities[user.id] = user;
       });
     });
+    // fetchArticle
     builder.addCase(fetchArticle.fulfilled, (state, action) => {
       state.status = 'success';
       if (!state.data.entities[action.payload.user.entity.id]) {

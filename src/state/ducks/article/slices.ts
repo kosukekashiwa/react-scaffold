@@ -86,6 +86,7 @@ export const articleSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // fetchArticles
     builder.addCase(fetchArticles.pending, (state) => {
       state.status = 'loading';
     });
@@ -97,6 +98,7 @@ export const articleSlice = createSlice({
     builder.addCase(fetchArticles.rejected, (state) => {
       state.status = 'failed';
     });
+    // fetchArticle
     builder.addCase(fetchArticle.pending, (state) => {
       state.status = 'loading';
     });
@@ -110,6 +112,7 @@ export const articleSlice = createSlice({
     builder.addCase(fetchArticle.rejected, (state) => {
       state.status = 'failed';
     });
+    // deleteArticle
     builder.addCase(deleteArticle.pending, (state) => {
       state.deleting = true;
     });
