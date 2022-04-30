@@ -17,11 +17,17 @@ import { FetchStatus } from '~/views/hooks';
 export type UserState = {
   status: FetchStatus;
   data: { ids: User['id'][]; entities: NormalizedUsers };
+  posting: boolean;
+  putting: boolean;
+  deleting: boolean;
 };
 
 const initialState: UserState = {
   status: 'idle',
   data: { ids: [], entities: {} },
+  posting: false,
+  putting: false,
+  deleting: false,
 };
 
 /** Users API path. */
@@ -65,10 +71,19 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.status = 'loading';
+    });
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.status = 'success';
       state.data.ids = action.payload.user.ids;
       state.data.entities = action.payload.user.entites;
+    });
+    builder.addCase(fetchUsers.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(fetchUser.pending, (state) => {
+      state.status = 'loading';
     });
     builder.addCase(fetchUser.fulfilled, (state, action) => {
       state.status = 'success';
@@ -77,11 +92,38 @@ export const userSlice = createSlice({
       }
       state.data.entities[action.payload.user.entity.id] = action.payload.user.entity;
     });
+    builder.addCase(fetchUser.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(postUser.pending, (state) => {
+      state.posting = true;
+    });
     builder.addCase(postUser.fulfilled, (state) => {
+      state.posting = false;
       state.status = 'idle';
     });
+    builder.addCase(postUser.rejected, (state) => {
+      state.posting = false;
+    });
+    builder.addCase(putUser.pending, (state) => {
+      state.putting = true;
+    });
     builder.addCase(putUser.fulfilled, (state) => {
+      state.putting = false;
       state.status = 'idle';
+    });
+    builder.addCase(putUser.rejected, (state) => {
+      state.putting = false;
+    });
+    builder.addCase(deleteUser.pending, (state) => {
+      state.deleting = true;
+    });
+    builder.addCase(deleteUser.fulfilled, (state) => {
+      state.deleting = false;
+      state.status = 'idle';
+    });
+    builder.addCase(deleteUser.rejected, (state) => {
+      state.deleting = false;
     });
     // chenge state by article
     builder.addCase(fetchArticles.fulfilled, (state, action) => {

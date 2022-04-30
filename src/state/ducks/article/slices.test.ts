@@ -163,6 +163,9 @@ describe('article slice teets', () => {
       user: {
         status: 'idle',
         data: { ids: ['1'], entities: { '1': { id: '1', name: 'name-1' } } },
+        posting: false,
+        putting: false,
+        deleting: false,
       },
     };
 
