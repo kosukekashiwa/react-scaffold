@@ -20,3 +20,24 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+export const TEST_STATE: RootState = {
+  ui: { paletteMode: 'light' },
+  article: {
+    status: 'idle',
+    data: {
+      ids: ['dummy'],
+      entities: {
+        dummy: { id: 'dummy', title: 'dummy', author: 'dummy' },
+      },
+    },
+    deleting: false,
+  },
+  user: {
+    status: 'idle',
+    data: { ids: ['dummy'], entities: { dummy: { id: 'dummy', name: 'dummy' } } },
+    posting: false,
+    putting: false,
+    deleting: false,
+  },
+};

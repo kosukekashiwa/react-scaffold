@@ -11,7 +11,7 @@ import {
   getArticle,
   isArticleDeleting,
 } from '~/state/ducks/article/slices';
-import { RootState } from '~/state/store';
+import { RootState, TEST_STATE } from '~/state/store';
 
 const initialState: ArticleState = {
   status: 'idle',
@@ -148,7 +148,7 @@ describe('article slice teets', () => {
 
   describe('selectors', () => {
     const testState: RootState = {
-      ui: { paletteMode: 'light' },
+      ...TEST_STATE,
       article: {
         status: 'success',
         data: {
