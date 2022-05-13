@@ -4,6 +4,7 @@
 
 - [x] Dark Mode
 - [x] Responsive Design
+- [ ] Github Actions
 
 ## Usage
 
