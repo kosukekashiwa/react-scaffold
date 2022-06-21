@@ -3,9 +3,8 @@
 [![CI](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml/badge.svg)](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kosukekashiwa/react-scaffold)
 ![GitHub](https://img.shields.io/github/license/kosukekashiwa/react-scaffold)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/kosukekashiwa/react-scaffold)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kosukekashiwa/react-scaffold)
-
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react)
 
 `Node: v16.13.0` `npm: v8.1.0`
 
@@ -38,9 +37,24 @@ Run `eslint --fix` and `prettier --write`.
 ```
 $ npm run format
 ```
-<!--
-## OSS
+## npm pacakages
+<!-- dependencies -->
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@reduxjs/toolkit)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react-router-dom)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@mui/material)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@emotion/styled)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/axios)
 
+<!-- devDependencies -->
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/typescript)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/eslint)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/prettier)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/jest)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/@testing-library/react)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/msw)
+
+<!--
 - Language
   - Typescript: "^4.6.2"
   - JSX
@@ -65,7 +79,7 @@ $ npm run format
   - React Testing Library: "^12.1.4"
   - Jest: "^27.5.1"
 - Mock server
-  - MSW: "^0.39.2",
+  - MSW: "^0.39.2"
 -->
 
 ## Views directory
