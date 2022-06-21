@@ -1,5 +1,12 @@
 # React Scaffold
 
+[![CI](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml/badge.svg)](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kosukekashiwa/react-scaffold)
+![GitHub](https://img.shields.io/github/license/kosukekashiwa/react-scaffold)
+![GitHub last commit](https://img.shields.io/github/last-commit/kosukekashiwa/react-scaffold)
+
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react)
+
 `Node: v16.13.0` `npm: v8.1.0`
 
 - [x] Dark Mode
@@ -31,7 +38,7 @@ Run `eslint --fix` and `prettier --write`.
 ```
 $ npm run format
 ```
-
+<!--
 ## OSS
 
 - Language
@@ -59,6 +66,7 @@ $ npm run format
   - Jest: "^27.5.1"
 - Mock server
   - MSW: "^0.39.2",
+-->
 
 ## Views directory
 
