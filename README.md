@@ -84,7 +84,7 @@ $ npm run format
 
 ## Views directory
 
-### Comparison with atomid design
+### Comparison with atomic design
 
 - atoms -> stytles (MUI theme file, Design token file)
 - molecules, organisms -> components
