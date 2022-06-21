@@ -1,10 +1,7 @@
 # React Scaffold
 
 [![CI](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml/badge.svg)](https://github.com/kosukekashiwa/react-scaffold/actions/workflows/main.yml)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kosukekashiwa/react-scaffold)
 ![GitHub](https://img.shields.io/github/license/kosukekashiwa/react-scaffold)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/kosukekashiwa/react-scaffold)
-![GitHub last commit](https://img.shields.io/github/last-commit/kosukekashiwa/react-scaffold)
 
 `Node: v16.13.0` `npm: v8.1.0`
 
@@ -39,20 +36,10 @@ $ npm run format
 ```
 ## npm pacakages
 <!-- dependencies -->
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@reduxjs/toolkit)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/react-router-dom)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@mui/material)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/@emotion/styled)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/axios)
+`"react": "^18.0.0"` `"react-redux": "^8.0.0"` `"react-router-dom": "^6.2.2"` `"@mui/icons-material": "^5.5.1"` `"@emotion/styled": "^11.8.1"` `"axios": "^0.26.1"`
 
 <!-- devDependencies -->
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/typescript)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/eslint)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/prettier)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/jest)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/@testing-library/react)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/kosukekashiwa/react-scaffold/dev/msw)
+`"typescript": "^4.6.2"` `"eslint": "^8.11.0"` `"prettier": "^2.6.0"` `"jest": "^28.1.1"` `"@testing-library/react": "^13.1.1"` `"msw": "^0.39.2"`
 
 <!--
 - Language
