@@ -16,11 +16,10 @@ import OverView from '~/views/natures/OverView';
 import { FLEXIBLE_MAX_WIDTH } from '~/views/styles/theme';
 
 const AppRouter: React.FC = () => {
-  // ROUTER_BASENAME is required for GitHub Pages.
-  const ROUTER_BASENAME = process.env.NODE_ENV === 'development' ? '/' : '/repo-name';
-
+  console.log(process.env.PUBLIC_URL);
   return (
-    <BrowserRouter basename={ROUTER_BASENAME}>
+    // basename={process.env.PUBLIC_URL} is required for GitHub Pages.
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path={'/'} element={<Navigate to={'ui'} />} />
         <Route path="ui" element={<AppLayout />}>
