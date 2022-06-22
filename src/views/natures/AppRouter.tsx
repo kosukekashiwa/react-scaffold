@@ -17,7 +17,8 @@ import { FLEXIBLE_MAX_WIDTH } from '~/views/styles/theme';
 
 const AppRouter: React.FC = () => {
   return (
-    <BrowserRouter>
+    // basename={process.env.PUBLIC_URL} is required for GitHub Pages.
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path={'/'} element={<Navigate to={'ui'} />} />
         <Route path="ui" element={<AppLayout />}>
