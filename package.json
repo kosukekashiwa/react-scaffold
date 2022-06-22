@@ -1,6 +1,7 @@
 {
   "name": "react",
   "version": "1.0.0",
+  "homepage": "http://kosukekashiwa.github.io/react-scaffold/",
   "description": "",
   "main": "index.js",
   "scripts": {
