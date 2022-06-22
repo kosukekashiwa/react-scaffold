@@ -7,7 +7,7 @@
 
 - [x] Dark Mode
 - [x] Responsive Design
-- [ ] Github Actions
+- [x] Github Actions (run test)
 
 ## Usage
 
@@ -34,11 +34,15 @@ Run `eslint --fix` and `prettier --write`.
 ```
 $ npm run format
 ```
+
 ## npm pacakages
+
 <!-- dependencies -->
+
 `"react": "^18.0.0"` `"react-redux": "^8.0.0"` `"react-router-dom": "^6.2.2"` `"@mui/icons-material": "^5.5.1"` `"@emotion/styled": "^11.8.1"` `"axios": "^0.26.1"`
 
 <!-- devDependencies -->
+
 `"typescript": "^4.6.2"` `"eslint": "^8.11.0"` `"prettier": "^2.6.0"` `"jest": "^28.1.1"` `"@testing-library/react": "^13.1.1"` `"msw": "^0.39.2"`
 
 <!--

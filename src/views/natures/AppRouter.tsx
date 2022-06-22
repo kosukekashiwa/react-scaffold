@@ -16,10 +16,8 @@ import OverView from '~/views/natures/OverView';
 import { FLEXIBLE_MAX_WIDTH } from '~/views/styles/theme';
 
 const AppRouter: React.FC = () => {
-  console.log(process.env.PUBLIC_URL);
   return (
-    // basename={process.env.PUBLIC_URL} is required for GitHub Pages.
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<Navigate to={'ui'} />} />
         <Route path="ui" element={<AppLayout />}>

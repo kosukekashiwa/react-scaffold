@@ -12,7 +12,6 @@
     "test": "jest",
     "test:watch": "npm test --watch",
     "build": "webpack --config webpack.prod.js",
-    "postbuild": "cp dist/index.html dist/404.html",
     "dev": "webpack serve --open --config webpack.dev.js",
     "mock:genDb": "node genDb.js > db.json",
     "mock:server": "json-server --watch db.json --routes jsonServerRoutes.json --port 3001",
