@@ -21,12 +21,19 @@ export const useFetch = (
   fetchAction: ThunkAction<any, any, any, any>,
 ): void => {
   const dispatch = useAppDispatch();
-  useEffect(() => {
+  useComponentDidMount(() => {
     dispatch(stateIdlingAction);
-  }, []);
+  });
+  // useEffect(() => {
+  //   dispatch(stateIdlingAction);
+  // }, []);
   useEffect(() => {
     if (dataStatus === 'idle') {
       dispatch(fetchAction);
     }
   }, [dataStatus, dispatch, fetchAction]);
+};
+
+const useComponentDidMount = (callback: () => void) => {
+  useEffect(callback, []);
 };

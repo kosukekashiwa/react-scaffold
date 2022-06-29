@@ -29,10 +29,10 @@ const AppHeader: React.FC<AppHeaderProps> = ({
 
   const handleDarkModeOnIconClick = useCallback((): void => {
     dispatch(darkModeOn());
-  }, []);
+  }, [dispatch]);
   const handleDarkModeOffIconClick = useCallback((): void => {
     dispatch(darkModeOff());
-  }, []);
+  }, [dispatch]);
 
   const paletteMode = useAppSelector(getPaletteMode);
 
