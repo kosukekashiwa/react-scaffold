@@ -19,7 +19,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/react'],
+              presets: ['@babel/preset-env', '@babel/react', '@babel/preset-typescript'],
               plugins: ['@babel/plugin-transform-runtime'],
             },
           },
